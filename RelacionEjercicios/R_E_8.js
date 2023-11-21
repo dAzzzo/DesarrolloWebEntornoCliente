@@ -31,13 +31,6 @@ Una vez calculada la letra, se debe comparar con la letra indicada por el usuari
 que la letra que ha indicado no es correcta. En otro caso, se muestra un mensaje indicando que el número y la letra de DNI son correctos.
 */
 
-
-
-
-
-
-
-
 /*function buscarLetra(dni){
 
 
@@ -72,46 +65,56 @@ if(/^\d{8}$/.test(dni)){
 }
 */
 
-
 //Pedimos por pantalla el dni
 let dni = prompt("Escriba los números de su DNI (8 números): ");
 
+function buscarLetra(dni) {
+  //Array de las letras del dni
+  let letras = [
+    "T",
+    "R",
+    "W",
+    "A",
+    "G",
+    "M",
+    "Y",
+    "F",
+    "P",
+    "D",
+    "X",
+    "B",
+    "N",
+    "J",
+    "Z",
+    "S",
+    "Q",
+    "V",
+    "H",
+    "L",
+    "C",
+    "K",
+    "E",
+    "T",
+  ];
 
-function buscarLetra(dni){
+  if (dni > 0 && dni <= 99999999) {
+    document.write("El número es valido :)<br>");
+  } else {
+    document.write("El número NO es valido :(<br>");
+  }
 
+  // Convierte la entrada a un número entero
+  let numeroDNI = parseInt(dni, 10);
 
-    //Array de las letras del dni
-let letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+  // Calcula el índice en el array de letras
+  let indiceLetra = numeroDNI % 23;
 
-
- 
-    if (dni > 0 && dni <= 99999999){
-        document.write("El número es valido :)<br>");
-    }else{
-        document.write("El número NO es valido :(<br>");
-    }
-
-
-     // Convierte la entrada a un número entero
-     let numeroDNI = parseInt(dni, 10);
-   
-     
-    // Calcula el índice en el array de letras
-    let indiceLetra = numeroDNI % 23;
-
-
-    //Obtener la letra
-    let letraFinal = letras[indiceLetra];
-    return letraFinal;
-    }
-
-
-
+  //Obtener la letra
+  let letraFinal = letras[indiceLetra];
+  return letraFinal;
+}
 
 let letraFinal = buscarLetra(dni);
 document.write("El número aleatorio del array letras es: " + letraFinal);
-
-
-
 
 document.write("<br>El DNI creado es: " + dni + letraFinal);
