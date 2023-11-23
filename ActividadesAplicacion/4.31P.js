@@ -22,13 +22,14 @@ function func(...params) {
   let multiplicacion = params[0] * params[params.length - 1];
 
   //division del segundo con el penultimo
-  //let division = params[1] / params[params.length - 2];
+  let division = params[1] / params[params.length - 2];
 
   //almacenando los resultados en un objeto
   let resultados = {
     suma: suma,
     media: media,
     multiplicacion: multiplicacion,
+    division: division,
   };
 
   return resultados;
