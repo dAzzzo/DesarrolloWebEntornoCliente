@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar elementos de un Array</title>
+</head>
+
+<body>
+    <script>
+        let array = ["primero", "edu", 3, 3, 1, 5, 2, 3, 4, 5, 6, "ultimo"];
+        document.write(array, "<br><br>");
+
+        // .push() añade un elemento al final del array
+        array.push("Daza");
+        document.write(array, "<br><br>");
+
+        // .shift() elimina el primer elemento de un array
+        array.shift();
+        document.write("Este es el array despues de eliminar el primer elemento: ", array, "<br><br>");
+
+        // .pop() elimina el último elemento de un array
+        array.pop();
+        document.write("Este es el array despues de eliminar el segundo elemento: ", array, "<br><br>");
+
+        // .length = <numero> le pone una nueva longitud al array
+        array.length = 4;
+        document.write("Este es el array al decirle que su longitud sea de 4: ", array, "<br><br>");
+
+        // .splice(<posición>, <cantidad>) elimina la cantidad de elementos que le indiques
+        // desde la posición que le indiques
+        array.splice(1, 3);
+        document.write("Este es el array despues de eliminar desde la posición 1, 3 elementos: ", array, "<br><br>");
+
+        // let <arrayNuevo>=<array1>.concat(<array2>) concatena el array 1 con el array 2 y lo almacena en un nuevo array
+        let array1 = ["ana", "edu", "juanjo", "dani", "edu"];
+        let array2 = [4, 3, 6, 7];
+
+        let arrayNuevo = array1.concat(array2);
+        document.write("Este es el nuevo array concatenado: ", arrayNuevo, "<br><br>");
+
+        //slice.(<posición empezar copiar>, <posición terminar copiar>) Sirve para copiar un array
+        let arrayCopiadoEntero = arrayNuevo.slice();
+        document.write("Este es el array copiado entero: ", arrayCopiadoEntero, "<br><br>");
+
+        let arrayCopiado = arrayNuevo.slice(2, 5);
+        document.write("Este es el array copiado desde la 2 (incluido) hasta la 5 (sin incluir): ", arrayCopiado, "<br><br>");
+
+        //let <resultado>=<array>.indexOf(<elemento a buscar>) Sirve para buscar un elemento en un array
+        //si lo encuentra devuelve el índice de la posicion del PRIMER ELEMENTO y si no lo encuentra devuelve -1
+        let respuesta = arrayNuevo.indexOf("edu");
+        document.write("El primer elemento edu está en la posición ", respuesta, " del array <br><br>");
+
+        //let <resultado>=<array>.lastIndexOf(<elemento a buscar>) Sirve para buscar un elemento en un array
+        //si lo encuentra devuelve el índice de la posicion del ÚLTIMO ELEMENTO y si no lo encuentra devuelve -1
+        respuesta = arrayNuevo.lastIndexOf("edu");
+        document.write("El último elemento edu está en la posición ", respuesta, " del array <br><br>");
+
+        //let <resultado>=<array>.includes(<elemento a buscar>) Sirve para buscar un elemento en un array
+        //si lo encuentra devuelve TRUE y si no lo encuentra devuelve FALSE
+        respuesta = arrayNuevo.includes("edu");
+        document.write("Edu está en el array: ", respuesta, "<br><br>");
+
+        // .sort() sirve para ordenar un array
+        let arrayOR = ["primero", "edu", 3, 3, 1, 5, 2, 3, 4, 5, 6, "ultimo"];
+        arrayOR.sort();
+        document.write("Este es el array ordenado: ", arrayOR, "<br><br>");
+
+        //.reverse()sirve para darle la vuelta al array
+        arrayNuevo.reverse();
+        document.write("Este es el array dado la vuelta: ", arrayNuevo, "<br><br>");
+
+    </script>
+</body>
+
+</html>
