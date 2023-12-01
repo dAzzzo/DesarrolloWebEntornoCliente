@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+
+        //Crea una funcion que devuelva la letra del DNI que recibe como parámetro
+        function letraDni(dni) {
+            return dni.charAt(dni.length -1);
+            
+        }
+        var dni=prompt("Introduzca el dni");
+        document.write("La ultima letra del DNI es: "+letraDni(dni));
+
+
+    </script>
+    </body>
+</html>

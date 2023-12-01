@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            //Programa una funcion que determine si un año que recibe como parámetro es bisiesto
+            function añoBisiesto(num) {
+                return num % 4 === 0;
+            }
+            let año = "¿Que año quieres comprobar?";
+            var resAño= parseInt(prompt(año));
+            var Bisiesto = añoBisiesto(resAño);
+            document.write("El Año " + resAño+" es Bisiesto = "+Bisiesto);
+        
+        
+    </script>
+    </body>
+</html>

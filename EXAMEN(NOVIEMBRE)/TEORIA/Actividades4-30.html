@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*Escribe una funcion que diga si un numero que recibe como parámetro es primo o no*/
+      function esPrimo(numero) {
+        if (numero <= 1) {
+          return false;
+        }
+
+        for (let i = 2; i <= Math.sqrt(numero); i++) {
+          if (numero % i === 0) {
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      // Ejemplo de uso
+      const miNumero = 13;
+      if (esPrimo(miNumero)) {
+        console.log(`${miNumero} es un número primo.`);
+      } else {
+        console.log(`${miNumero} no es un número primo.`);
+      }
+    </script>
+  </body>
+</html>

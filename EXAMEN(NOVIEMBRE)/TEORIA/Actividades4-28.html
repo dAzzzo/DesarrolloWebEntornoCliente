@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*Crea una funcion que reciba como parámetros dos arrays de 4x4 y devuleva un tercer
+        array relleno de ceros excepto en aquellas posiciones en las que los dos primeros arryas
+        tienen valores iguales
+        */ 
+
+        
+        function compararArrays(array1, array2) {
+    if (array1.length !== 4 || array2.length !== 4) {
+        throw new Error('Los arrays deben ser de tamaño 4x4.');
+    }
+
+    // Inicializar el nuevo array con ceros
+    let nuevoArray = Array.from({ length: 4 }, () => Array(4).fill(0));
+
+    // Comparar los valores y llenar el nuevo array en las posiciones correspondientes
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            if (array1[i][j] === array2[i][j]) {
+                nuevoArray[i][j] = array1[i][j];
+            }
+        }
+    }
+
+    return nuevoArray;
+}
+
+// Ejemplo de uso
+const array1 = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+];
+
+const array2 = [
+    [1, 2, 13, 14],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+];
+
+const resultado = compararArrays(array1, array2);
+console.log(resultado);
+
+
+
+
+    </script>
+</body>
+</html>

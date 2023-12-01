@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            //escribe una funcion que indique si un numero que recibe como parámetro es múltiplo de 10
+            function MultiplosDe10(num) {
+                return num % 10 === 0; 
+                
+            }
+
+
+            let num = "¿Que numero quieres comprobar?";
+            var resNum= parseInt(prompt(num));
+            var multiplo = MultiplosDe10(resNum);
+            document.write("El numero a comprobar es " + multiplo)
+    </script>
+
+    </body>
+</html>

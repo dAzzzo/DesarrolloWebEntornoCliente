@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*Crea una funcion que reciba un array de 10 elementos , los rellene con numeros,
+        aleatorios entre 1 y 100 y los ordene , de manera que aparezcan primero aquellos que 
+        terminan en 0. 
+        */
+      function ordenarYFiltrar(array) {
+        // Rellenar el array con números aleatorios entre 1 y 100
+        array = array.map(() => Math.floor(Math.random() * 100) + 1);
+
+        // Ordenar el array, colocando primero los números que terminan en 0
+        array.sort((a, b) => {
+          const lastDigitA = a % 10;
+          const lastDigitB = b % 10;
+
+          if (lastDigitA === 0 && lastDigitB !== 0) {
+            return -1;
+          } else if (lastDigitA !== 0 && lastDigitB === 0) {
+            return 1;
+          } else {
+            return a - b; // En caso de empate, ordenar de forma ascendente
+          }
+        });
+
+        return array;
+      }
+
+      // Ejemplo de uso
+      const arrayOriginal = new Array(10);
+      const resultado = ordenarYFiltrar(arrayOriginal);
+      console.log(resultado);
+    </script>
+  </body>
+</html>
