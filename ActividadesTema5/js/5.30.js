@@ -1,6 +1,6 @@
 /*
 function escapeHTML(text){
-    var replacements = [["&", "&amp;"],["\"","&quot;"],["<","&It;"],[">","&gt;"]];
+    let replacements = [["&", "&amp;"],["\"","&quot;"],["<","&It;"],[">","&gt;"]];
     forEach(replacements, function(replace){
         text = text.replace(replace[0], replace[1]);
     });
@@ -8,20 +8,20 @@ function escapeHTML(text){
 }
 */
 function escapeHTML(text) {
-    var replacements = [
-      ["&", "&amp;"],
-      ["\"", "&quot;"],
-      ["<", "&lt;"],
-      [">", "&gt;"]
-    ];
-  
-    for (var i = 0; i < replacements.length; i++) {
-      var regex = new RegExp(replacements[i][0], "g");
-      text = text.replace(regex, replacements[i][1]);
-    }
-  
-    return text;
+  let replacements = [
+    ["&", "&amp;"],
+    ['"', "&quot;"],
+    ["<", "&lt;"],
+    [">", "&gt;"],
+  ];
+
+  for (let i = 0; i < replacements.length; i++) {
+    let regex = new RegExp(replacements[i][0], "g");
+    text = text.replace(regex, replacements[i][1]);
   }
-  
-  console.log(escapeHTML("& --- \" --- < --- >"));
-  
+
+  return text;
+}
+
+console.log('& --- " --- < --- >');
+console.log(escapeHTML('& --- " --- < --- >'));
