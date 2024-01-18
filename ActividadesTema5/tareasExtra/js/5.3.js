@@ -31,7 +31,7 @@ class Hospital {
 
 }
 
-let hospital = new Hospital('Nuestra Señora de Santa María del Puerto', 'El Puerto de Santa María', 2343, [{ DNI: '23443398X', nombreP: 'Juan', enfermendad: 'Linux User' }, { DNI: '09876345C', nombreP: 'Daniel', enfermendad: 'Exceso de facha' }]);
+let hospital = new Hospital('Nuestra Señora de Santa María del Puerto', 'El Puerto de Santa María', 2343, [{ DNI: '23443398X', nombreP: 'Juan', enfermendad: "Linux User" }, { DNI: '09876345C', nombreP: 'Daniel', enfermendad: 'Exceso de facha' }]);
 hospital.detallesHospital();
 
 
