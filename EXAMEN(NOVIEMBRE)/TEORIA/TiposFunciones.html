@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //Funcion por declaracion
+    let resultado = multiplicar(7, 5);
+    function multiplicar(a, b) {
+      return a * b;
+    }
+    console.log(resultado);
+
+    //funciones por expresion
+    //Se utiliza bienvenido (el nombre de la constante) para llamar a la funcion
+    const bienvenido = function sesionIniciada() {
+      console.log("Bienvenido de nuevo");
+    };
+    bienvenido();
+    // sesionIniciada(); //esto dara fallo
+
+    //Funciones como objetos
+    const bienvenido2 = new Function("console.log(`Bienvenido de nuevo`);");
+    bienvenido2();
+
+    //Funciones anonimas
+    const bienvenido3 = function () {
+      console.log("Bienvenido Funcion anonima");
+    };
+    bienvenido3();
+
+    //Callbacks
+    //Funcion anonima que se pasa como parametro a otra funcion
+    const bienvenido4 = function () {
+      return "Bienvenido de nuevo, ";
+    };
+    const usuario = function (callback) {
+      console.log(callback() + "Javier");
+    };
+    usuario(bienvenido4);
+
+    //Funciones autoejecutables
+    //Se ejecuta instantaneamente
+    (function (usuario) {
+      console.log("Bienvenido de nuevo5, " + usuario);
+    })("Daniel"); //Aqui se le pasa el parametro
+
+    //Funciones Clausuras
+    function mensaje() {
+      let texto = "hola mundo";
+      function muestraMensaje() {
+        console.log(texto);
+      }
+      return muestraMensaje;
+    }
+    let variable = mensaje();//esto es la clausura
+    variable();
+
+    //Funcion Flecha
+    const mensaje2 = () => { console.log("Hola de nuevo"); };
+    mensaje2();
+
+  </script>
+</body>
+
+</html>

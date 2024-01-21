@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+        //Crear una funcion que devuelva como grados Celsius la cantidad de grados Fahrenheit que recibe como parámetro.
+            function pasar_a_GradosCelsius(num) {
+                var celsius = (num - 32) * 5 / 9;
+                  return celsius;
+            }
+            let farenheit = "Grados Farenheit que quieres pasar a Celsius";
+            var gradosFahrenheit= parseInt(prompt(farenheit));
+            var gradosCelsius = pasar_a_GradosCelsius(gradosFahrenheit);
+            document.write(gradosFahrenheit + " grados Fahrenheit son equivalentes a " + gradosCelsius + " grados Celsius.");
+
+    </script>
+    </body>
+</html>

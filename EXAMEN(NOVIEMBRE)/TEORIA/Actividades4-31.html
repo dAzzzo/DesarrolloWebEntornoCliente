@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Crea una función que diga si un número variable de parámetrosnuméricos
+        (al menos cuatro números)y devuleva su suma, su media aritmética , la multiplicación
+        del primero con el último, y la división del segundo con el penúltimo.
+        
+        */
+      function operacionesNumericas(...numeros) {
+        if (numeros.length < 4) {
+          throw new Error(
+            "Se necesitan al menos cuatro números como parámetros."
+          );
+        }
+
+        // Suma
+        let suma = 0;
+        for (let i = 0; i < numeros.length; i++) {
+          suma += numeros[i];
+        }
+        // Media aritmética
+        let media = suma / numeros.length;
+
+        // Multiplicación del primero con el último
+        let multiplicacion = numeros[0] * numeros[numeros.length - 1];
+
+        // División del segundo con el penúltimo
+        let division = numeros[1] / numeros[numeros.length - 2];
+
+        return {
+          suma,
+          media,
+          multiplicacion,
+          division,
+        };
+      }
+
+      // Ejemplo de uso
+      const resultado = operacionesNumericas(1, 2, 3, 4, 5);
+      console.log(resultado);
+    </script>
+  </body>
+</html>

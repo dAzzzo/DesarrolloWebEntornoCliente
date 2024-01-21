@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*Programa una función que reciba un array de cadenas de caracteres y que por medio
+      del método filteer devuelva aquellos caracteres que no forman parte del alfabeto
+      español.Prueba la función incluyendo palabras con caracteres como $ o &
+    */
+
+      function filtrarCaracteresAlfabeticos(arrayDePalabras) {
+        const alfabetoEspanol = /^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]+$/;
+
+        return arrayDePalabras.filter((palabra) =>
+          alfabetoEspanol.test(palabra)
+        );
+      }
+
+      // Ejemplo de uso
+      const palabrasConCaracteresEspeciales = [
+        "Hola",
+        "Mundo",
+        "123",
+        "$caracter",
+        "palabra&",
+      ];
+
+      const palabrasFiltradas = filtrarCaracteresAlfabeticos(
+        palabrasConCaracteresEspeciales
+      );
+
+      console.log("Palabras filtradas:", palabrasFiltradas);
+    </script>
+  </body>
+</html>

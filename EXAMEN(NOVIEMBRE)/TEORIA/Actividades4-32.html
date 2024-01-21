@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        Escribe una función que devuelva true si dos palabras que recibe como parámetros
+        contienen las mismas letras , aunque se encuentren en posiciones distintas
+        
+        */
+      function tienenMismasLetras(palabra1, palabra2) {
+        // Convertir las palabras a arrays de caracteres y ordenarlos
+        const arrayLetras1 = palabra1.split("").sort();
+        const arrayLetras2 = palabra2.split("").sort();
+
+        // Comparar si los arrays ordenados son iguales
+        return arraysSonIguales(arrayLetras1, arrayLetras2);
+      }
+
+      // Función para comparar si dos arrays son iguales
+      function arraysSonIguales(array1, array2) {
+        if (array1.length !== array2.length) {
+          return false;
+        }
+
+        for (let i = 0; i < array1.length; i++) {
+          if (array1[i] !== array2[i]) {
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      // Ejemplo de uso
+      const palabraA = "hola";
+      const palabraB = "aloh";
+
+      if (tienenMismasLetras(palabraA, palabraB)) {
+        console.log(
+          `Las palabras "${palabraA}" y "${palabraB}" tienen las mismas letras.`
+        );
+      } else {
+        console.log(
+          `Las palabras "${palabraA}" y "${palabraB}" no tienen las mismas letras.`
+        );
+      }
+    </script>
+  </body>
+</html>

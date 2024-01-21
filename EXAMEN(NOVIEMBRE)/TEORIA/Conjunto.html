@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conjuntos</title>
+</head>
+
+<body>
+    <script>
+
+        let array = ["ana", "edu", "juanjo", "dani", "edu"];
+
+        //Un CONJUNTO es una estructura de datos muy parecida a arrays pero sin elementos duplicados 
+        //Para crear un conjunto se usa "new set(vacio o <elemento, array>)"
+        var conjunto = new Set(array);
+
+        //Para recorrer un conjunto se usa for(let <elemento> of <conjunto>)
+        for (let elemento of conjunto) {
+            document.write(elemento, " ");
+        }
+        document.write("<br><br>")
+
+        //Para añadir elementos al final del conjunto se usa el metodo "add"
+        conjunto.add("daza");
+        for (let elemento of conjunto) {
+            document.write(elemento, " ");
+        }
+        document.write("<br><br>")
+
+        //Para eliminar un elemento de un conjunto usamos  .delete(<elemento>)
+        conjunto.delete("daza");
+        for (let elemento of conjunto) {
+            document.write(elemento, " ");
+        }
+        document.write("<br><br>")
+
+        //Para eliminar todos los elementos de un conjunto usamos .clear()
+        conjunto.clear();
+
+        //Para calcular el tamaño de un conjunto usamos .size
+        var conjunto1 = new Set(array);
+
+        document.write("El conjunto tiene un tamaño de: ", conjunto1.size, "<br><br>");
+
+        // .has(<elemento>) sirve para saber si el elemento se encuentra en el conjunto
+        document.write(conjunto1.has("edu"), "<br><br>");
+
+        //Para pasar de un conjunto a un array se crea la variable de la siguiente forma "var <array> = [...<conjunto>]"
+        var array1 = [...conjunto1];
+        document.write("Este es el array creado: ",  array1, "<br><br>");
+
+        //Para unir varios arrays en un conjunto se pondria "var <conjunto> = new Set([...array1, ...array2, ...array3])"
+        var array2 = [1, 2, 3, 4,4 ,5];
+        var array3 = [5, 6, 7];
+
+        var conjunto2 = new Set([...array1, ...array2, ...array3]);
+        for (let elemento of conjunto2) {
+            document.write(elemento, " ");
+        }
+        document.write("<br><br>")
+        
+
+    </script>
+</body>
+
+</html>

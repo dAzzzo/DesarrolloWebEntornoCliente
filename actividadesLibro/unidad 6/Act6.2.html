@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 6.2</title>
+    <!-- <script src="js/Act6.2.js"></script> -->
+
+</head>
+
+<body>
+
+    <span id="CEO">Daniel<br></span>
+    <span id="CTO">Juan<br></span>
+    <span id="CIO">Daza<br></span>
+    <span id="CAO">Dani B<br></span>
+    <span id="CIO">Diego<br></span>
+
+</body>
+
+<script>
+    let ceo = document.getElementById("CEO");
+    console.info(ceo);
+    console.info(ceo.nodeType);
+    console.log(ceo.nodeName);
+    console.log(ceo.nodeValue);
+    console.log('--------------');
+
+    let equipo = document.getElementsByTagName('span');
+    console.info(equipo);
+    console.log(equipo.length);
+    console.log(equipo[3]);
+</script>
+
+</html>
