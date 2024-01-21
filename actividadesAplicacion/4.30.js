@@ -3,26 +3,25 @@
 let num = parseInt(prompt("Escriba un número y diremos si es primo o no: "));
 
 function numPrimo(num) {
+  let esPrimo = true;
 
-    let esPrimo = true;
-
-    if (num <= 1) {
+  if (num <= 1) {
+    esPrimo = false;
+  } else {
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) {
         esPrimo = false;
-    } else {
-        for (let i = 2; i <= Math.sqrt(num); i++) {
-            if (num % i === 0) {
-                esPrimo = false;
-                break;
-            }
-        }
+        break;
+      }
     }
+  }
 
-    return esPrimo;
+  return esPrimo;
 }
 
 let esPrimo = numPrimo(num);
 if (esPrimo) {
-    document.write(num + " es primo");
+  document.write(num + " es primo");
 } else {
-    document.write(num + " no es primo");
+  document.write(num + " no es primo");
 }

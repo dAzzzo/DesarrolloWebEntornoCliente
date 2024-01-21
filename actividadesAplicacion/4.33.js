@@ -24,16 +24,14 @@ patrón y una cadena. Devuelve true si encuentra una
 coincidencia y false si no la encuentra.
 */
 
-
-
 function comprobarArr() {
+  let palabras = ["hola", "adios", "$", "perro", "&", "gato", "^", "agua"];
 
-    let palabras = ['hola', 'adios', '$', 'perro', '&', 'gato', '^', 'agua'];
+  let resultado = palabras.filter((palabra) => {
+    return /[^A-Za-z0-9_]/.test(palabra);
+  });
 
-    let resultado = palabras.filter(palabra => {
-       return /[^A-Za-z0-9_]/.test(palabra);});
-
-    return resultado;
+  return resultado;
 }
 
 let resultado = comprobarArr();

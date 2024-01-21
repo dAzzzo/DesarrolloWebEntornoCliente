@@ -1,23 +1,15 @@
-/*Escribre una fincion que devuelva true si dos palabras que recibe como 
-parametros contienen las mismas letras, aunque se encuentren en posicinones
-distintas*/
+/*Escribe una funcion que devuelva true si dos palabras que recibe como parametro
+contienen las mismas letras, aunque se encuentren en posiciones distintas
+*/
 
 let palabra1 = prompt("Escriba una palabra: ");
-let palabra2 = prompt("Escriba una palabra y veamos si tienen las mismas letras que la anterior palabra elegida: ");
+let palabra2 = prompt("Escriba una palabra: ");
 
-function comprobarPalabra(palabra1, palabra2) {
+function esIgual(palabra1, palabra2) {
+  let palabra1Formateada = palabra1.toLowerCase().split("").sort().join("");
+  let palabra2Formateada = palabra2.toLowerCase().split("").sort().join("");
 
-let resultado = true;
-
-    let nuevaP1 = palabra1.toLowerCase().split('').sort().join('');
-    let nuevaP2 = palabra2.toLowerCase().split('').sort().join('');
-
-    if(nuevaP1 != nuevaP2){
-        resultado = false;
-    }
-
-    return resultado;
+  if (palabra1Formateada.length === palabra2Formateada.length) {
+    return true;
+  }
 }
-
-let resultado = comprobarPalabra(palabra1, palabra2);
-document.write(resultado);
