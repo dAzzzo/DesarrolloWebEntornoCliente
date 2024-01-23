@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Crea una función llamada numeroMayor() que toma tres números como entrada y retornar el numero mayor de ellos, 
+        // si son iguales devolver un String «son iguales».
+        function numeroMayor(n1, n2, n3) {
+            if (n1 > n2 && n1 > n3) {
+                return n1;
+            } else if (n2 > n1 && n2 > n3) {
+                return n2;
+            } else if (n3 > n1 && n3 > n2) {
+                return n3;
+            } else {
+                return 'son iguales';
+            }
+        }
+
+        let respuesta = numeroMayor(12, 5, 6);
+        document.write(respuesta);
+
+    </script>
+
+    <script>
+        // Escriba una función con el nombre de esVocal() que tome un 
+        // carácter , devuelva True si es vocal (no importa si es 
+        // mayúscula o minúscula), y devuelva False en caso contrario.
+        const esVocal = (c) => {
+    if (c === 'a' || c === 'e' || c === 'i' || c === 'o' || c === 'u') {
+        return true
+    }
+    if (c === 'A' || c === 'E' || c === 'I' || c === 'O' || c === 'U') {
+        return true
+    }
+
+    return false
+
+}
+
+const respuesta2 = esVocal('e');
+console.log(respuesta2) // respuesta: true
+    </script>
+</body>
+
+</html>

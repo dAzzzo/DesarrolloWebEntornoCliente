@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 13</title>
+    <!-- <script src="js/ejercicio13.js"></script> -->
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+    Ejercicio Avanzado de POO: Sistema de Biblioteca
+
+    Vamos a diseñar un sistema de biblioteca más completo. Crea las siguientes clases:
+
+    --Libro:
+    Propiedades: titulo, autor, anioPublicacion, disponible 
+    (un indicador de si el libro está disponible para ser prestado).
+
+    Métodos: mostrarInformacion() para mostrar detalles del libro y 
+    prestarLibro() para marcar el libro como prestado.
+    
+    --Biblioteca:
+    Propiedades: nombre, listaDeLibros (un array que contendrá 
+    instancias de libros).
+
+    Métodos: agregarLibro(libro), mostrarLibrosDisponibles() para 
+    mostrar los libros disponibles, y buscarLibroPorTitulo(titulo) 
+    para buscar un libro por su título.
+    
+    --Usuario:
+    Propiedades: nombre, librosPrestados (un array que contendrá 
+    instancias de libros que ha prestado el usuario).
+
+    Métodos: prestarLibro(libro), devolverLibro(libro).
+    Utiliza estas clases para simular la interacción entre un usuario, 
+    una biblioteca y varios libros. Crea instancias de libros, agrégales 
+    a la biblioteca, y permite que los usuarios pidan prestados y devuelvan libros.
+    */
+
+    class Libro {
+        constructor(titulo, autor, anioPublicacion, disponible) {
+            this.titulo = titulo;
+            this.autor = autor;
+            this.anioPublicacion = anioPublicacion;
+            this.disponible = true;
+        }
+
+        prestarLibro() {
+            if (this.disponible == true) {
+                console.log('El libro está disponible.');
+                return true;
+            } else {
+                console.log('El libro ha sido prestado.');
+                return false;
+            }
+        }
+
+        devolverLibro() {
+            this.disponible = true;
+            console.log(`El libro ${this.titulo} ha sido devuelto.`);
+        }
+
+        mostrarInformacion() {
+            console.log('Información sobre el Libro:\n');
+            console.log(`Títutlo: ${this.titulo}\n`);
+            console.log(`Autor: ${this.autor}\n`);
+            console.log(`Año de publicación: ${this.anioPublicacion}\n`);
+            /*
+            if (this.disponible) {
+              console.log('Disponible: Sí');
+            } else {
+            console.log('Disponible: No');
+            }
+            */
+            console.log(`Disponibilidad: ${this.disponible ? 'Si' : 'No'}\n`);
+            console.log(`----------\n`);
+        }
+    }
+
+    class Biblioteca {
+        constructor(nombre, listaDeLibros) {
+            this.nombre = nombre;
+            this.listaDeLibros = [];
+        }
+
+        agregarLibro(libro) {
+            this.listaDeLibros.push(libro);
+            console.log(`Libro "${libro.nombre}" agregado a la biblioteca "${this.nombre}"\n`);
+        }
+
+        mostrarLibrosDisponibles() {
+            console.log(`Libros disponibles en la biblioteca: "${this.nombre}":`);
+            this.listaDeLibros.forEach(libro => {
+                if (libro.disponible) {
+                    console.log(`---- Libro "${libro.titulo}"`);
+                    libro.mostrarInformacion();
+                }
+            });
+        }
+
+        buscarLibroPorTitulo(titulo) {
+            return this.listaDeLibros.find(libro => libro.titulo === titulo);
+        }
+    }
+
+    class Usuario{
+        constructor(nombre, librosPrestados){
+            this.nombre = nombre;
+            this.librosPrestados = [];
+        }
+
+        prestarLibro(libro){
+            if(libro.prestarLibro()){
+                this.librosPrestados.push(libro);
+                console.log(`Libro "${libro.titulo}" prestado a ${this.nombre}.`);
+            }else{
+                console.log(`No se pudo prestar el libro "${libro.titulo}" a ${this.nombre}.`);
+            }
+        }
+
+        devolverLibro(libro){
+            libro.devolverLibro();
+            this.librosPrestados = this.librosPrestados.filter(l => 1 !== libro);
+            console.log(`Libro "${libro.titulo}" devuelto por ${this.nombre}.`);
+        }
+    }
+
+let bibliotecaCentral = new Biblioteca("Biblioteca Central");
+
+// Crear instancias de libros y agregarlos a la biblioteca
+let libro1 = new Libro("El Señor de los Anillos", "J.R.R. Tolkien", 1954);
+let libro2 = new Libro("Cien años de soledad", "Gabriel García Márquez", 1967);
+bibliotecaCentral.agregarLibro(libro1);
+bibliotecaCentral.agregarLibro(libro2);
+
+//Crear instancia de usuarii
+let usuario1 = new Usuario('Juan');
+
+//prestar un libro al usuario
+usuario1.prestarLibro(libro1);
+
+//Mostrar libros disponibles en la biblioteca
+bibliotecaCentral.mostrarLibrosDisponibles();
+
+//Devolver un libro prestado por el usuario
+usuario1.devolverLibro(libro1);
+</script>
+
+</html>

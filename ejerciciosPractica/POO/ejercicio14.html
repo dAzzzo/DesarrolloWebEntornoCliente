@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 14</title>
+</head>
+
+<body>
+    <script>
+        class Producto {
+            constructor(id, nombre, precio) {
+                this.id = id;
+                this.nombre = nombre;
+                this.precio = precio;
+                this.disponible = true;
+            }
+
+            comprarProducto() {
+                if (this.disponible) {
+                    this.disponible = false;
+                    console.log(`El producto ${this.nombre} ha sido comprado. Es decir, no está disponible.`);
+                } else {
+                    console.log(`El producto ${this.nombre} no ha sido comprado. Es decir, está disponible.`);
+                }
+            }
+
+            mostrarInformacion() {
+                console.log(`\n\n-------------`);
+                console.log(`Id: ${this.id}`);
+                console.log(`Nombre: ${this.nombre}`);
+                console.log(`Precio: ${this.precio}`);
+                console.log(`Disponible: ${this.disponible ? 'SI' : 'NO'}`);
+            }
+        }
+
+        class ProductoElectronico extends Producto {
+            constructor(id, nombre, precio, marca) {
+                super(id, nombre, precio);
+                this.marca = marca;
+            }
+
+            mostrarInformacionTec() {
+                super.mostrarInformacion();
+                console.log(`Marca del producto electrónico: ${this.marca}`);
+            }
+        }
+
+        class ProductoRopa extends Producto {
+            constructor(id, nombre, precio, talla, color) {
+                super(id, nombre, precio);
+                this.talla = talla;
+                this.color = color;
+            }
+
+            mostrarInformacionRopa() {
+                super.mostrarInformacion();
+                console.log(`Talla: ${this.talla}`);
+                console.log(`Color: ${this.color}`);
+            }
+        }
+
+        class CarritoDeCompras {
+            constructor() {
+                this.productos = [];
+            }
+
+            agregarProducto(producto) {
+                this.productos.push(producto);
+            }
+
+            mostrarProductosEnCarrito() {
+                console.log(`Productos en el carrito:`);
+                this.productos.forEach(producto => {
+                    console.log(`---Producto: ${producto.nombre}---`);
+                    producto.mostrarInformacion();
+                });
+            }
+
+            calcularTotal() {
+                let total = this.productos.reduce((acc, producto) => acc + producto.precio, 0);
+                console.log(`\n\nTotal del carrito: ${total} euros`);
+            }
+        }
+
+        class Cliente {
+            constructor(nombre) {
+                this.nombre = nombre;
+                this.carrito = new CarritoDeCompras();
+            }
+
+            realizarCompra() {
+                console.log(`\n\n¡${this.nombre} está realizando una compra!`);
+                this.carrito.mostrarProductosEnCarrito();
+                this.carrito.calcularTotal();
+                console.log(`Compra realizada por ${this.nombre}. ¡Gracias por comprar con nosotros!`)
+            }
+        }
+
+        let producto1 = new ProductoElectronico('159z', 'Radio', 49, 'BMW');
+        let producto2 = new ProductoRopa('758z', 'Camiseta', 12, 35, 'Azul');
+
+        producto1.mostrarInformacionTec();
+        producto1.comprarProducto();
+
+        producto2.mostrarInformacionRopa();
+
+        let cliente = new Cliente(`Carolina`);
+
+        cliente.carrito.agregarProducto(producto1);
+        cliente.carrito.agregarProducto(producto2);
+        cliente.realizarCompra();
+    </script>
+</body>
+
+</html>

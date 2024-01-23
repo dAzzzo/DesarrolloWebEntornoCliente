@@ -14,6 +14,10 @@ if (expresionRegular.test(precio)) {
   console.log("Precio inválido");
 }
 
+<<<<<<< HEAD
+
+/*
+=======
 /*
 function Perro(nombre, criadero, color, sexo) {
 this.nombre = nombre;
@@ -29,6 +33,7 @@ elPerro.toString(); //devuelve [object Object]
 
 
 
+>>>>>>> b13c3ad7f6a5ec558c1dd5c0b7e8cbff9aa902f5
 ^: Representa el inicio de la cadena. Esto asegura que la cadena comience con el patrón que sigue a continuación.
 
 (...): Define un grupo de captura.
@@ -46,6 +51,10 @@ que este grupo sea opcional.
 
 €: Coincide con el carácter euro literal.
 
+<<<<<<< HEAD
+$: Representa el final de la cadena. Esto asegura que la cadena termine justo después del símbolo euro.
+*/
+=======
 x(?=y): Coincide con "x" solo si "x" va seguida de "y". Por ejemplo, /Jack(?=Sprat)/ reconocerá a 
 "Jack" solo si va seguida de "Sprat". /Jack(?=Sprat|Frost)/ encontrará a "Jack" solo si va seguida 
 de "Sprat" o "Frost". Sin embargo, ni "Sprat" ni "Frost" forman parte del resultado.
@@ -113,3 +122,4 @@ Diseñar mediante clases el siguiente problema. EN esta ciudad hay Empresarios q
      -anular una reserva de un cliente para una fecha
      -dar una baja de cliente   
 */
+>>>>>>> b13c3ad7f6a5ec558c1dd5c0b7e8cbff9aa902f5
