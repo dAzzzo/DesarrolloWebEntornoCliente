@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 6.17</title>
+    <style>
+        div {
+            background-color: yellow;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <ol id="lista">
+            <li>Daniel A</li>
+            <li>Juan C</li>
+            <li>Edu D</li>
+            <li>Dani B</li>
+        </ol>
+    </div>
+
+</body>
+
+<script>
+    /*
+    Crea un programa que, partiendo de un código HTML con una lista ordenada de 
+    personas, devuelva los nombres de la primera y de la última de la lista
+    */
+    let lista = document.getElementById('lista'); 
+    let primerNombre = lista.firstElementChild.textContent; 
+    let ultimoNombre = lista.lastElementChild.textContent; 
+
+    console.log('Primer nombre:', primerNombre);
+    console.log('Ultimo nombre:', ultimoNombre);
+
+</script>
+
+</html>
