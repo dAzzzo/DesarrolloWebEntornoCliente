@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 6.17</title>
+</head>
+
+<body>
+
+    <div>
+        <ol id="lista">
+            <li>Daniel A</li>
+            <li>Juan C</li>
+            <li>Edu D</li>
+            <li>Dani B</li>
+        </ol>
+    </div>
+
+</body>
+
+<script>
+    /*
+   Elabora un programa que permita añadir filas a una tabla HTML
+    */
+    let resultado = document.createElement('li'); 
+    resultado.innerHTML = 'Nuevo empleado';
+    document.getElementById('lista').appendChild(resultado);
+
+</script>
+
+</html>

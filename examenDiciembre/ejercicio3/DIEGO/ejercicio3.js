@@ -1,5 +1,5 @@
 // Función para construir la cadena invertida de otra cadena recibida
-const invertida = function(str) {
+let invertida = function(str) {
     // Inicializo la cadena invertida como vacía
     let str_inv = "";
     // Recorro la cadena recibida desde el final hacia el principio, escribiendo caracter por caracter en la invertida
