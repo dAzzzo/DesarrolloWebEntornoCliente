@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 6.20</title>
+    <style>
+        div {
+            width: 20px;
+            height: 20px;
+            border-color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="estilo" data-width="" data-height="" data-bordercolor="">caja</div>
+
+</body>
+
+<script>
+    /*
+    Crea un programa que, partiendo del siguiente código HTML, pregunte
+    al usuario el ancho, el alto y el color del borde de la caja. 
+    Debes ir rellenando cada atributo data con su valor. Finalmente,
+    debes recoger los valores de los atributos data y aplicar los estilos
+    correspondientes a la caja:
+    <div data-width="" data-height="" data-bordercolor="">caja</div>
+    */
+
+    function cambioEstilo() {
+        let nuevoEstilo = document.getElementById('estilo');
+
+        let nuevoEstiloWidth = prompt('Escriba el width en px:');
+        nuevoEstilo.style.width = nuevoEstiloWidth + 'px';
+
+        let nuevoEstiloHeight = prompt('Escriba el height en px:');
+        nuevoEstilo.style.height = nuevoEstiloHeight + 'px';
+
+        let nuevoEstiloBorderColor = prompt('Escriba el color del borde:');
+        nuevoEstilo.style.borderColor = nuevoEstiloBorderColor;
+
+    }
+
+    cambioEstilo();
+
+</script>
+
+</html>

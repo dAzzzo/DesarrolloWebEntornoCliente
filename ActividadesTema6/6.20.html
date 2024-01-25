@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 6.20</title>
+</head>
+
+<body>
+
+    <div id="ej">
+        <ul id="lista">
+        </ul>
+        <div class="cierre">
+            <button class="clsPromptButton" type="BUTTON" onclick="test()">Cerrar</button>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    /*
+    Escribe un programa que vaya interrogando al usuario sobre una lista de 
+    ingredientes. Por cada ingrediente se debe añadir un elemento a una 
+    lista desordenada. La petición de ingredientes finalizará cuendo el 
+    usuario pulse el botón cancelar
+    */
+
+    let ingrediente = "";
+    do {
+        let agregarIngrediente = document.createElement('li');
+        ingrediente = prompt('Introduce un ingrediente');
+        console.log(ingrediente);
+        agregarIngrediente.innerHTML = ingrediente;
+        if (ingrediente != null) {
+            document.getElementById('lista').appendChild(agregarIngrediente);
+        }
+    } while (ingrediente != null);
+
+
+
+</script>
+
+</html>

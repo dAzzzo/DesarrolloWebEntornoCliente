@@ -14,26 +14,9 @@ if (expresionRegular.test(precio)) {
   console.log("Precio inválido");
 }
 
-<<<<<<< HEAD
-
 /*
-=======
-/*
-function Perro(nombre, criadero, color, sexo) {
-this.nombre = nombre;
-this.criadero = criadero;
-this.color = color;
-this.sexo = sexo;
-}
-
-elPerro = new Perro("Gabby", "Laboratorio", "chocolate", "femenino");
-
-elPerro.toString(); //devuelve [object Object]
 
 
-
-
->>>>>>> b13c3ad7f6a5ec558c1dd5c0b7e8cbff9aa902f5
 ^: Representa el inicio de la cadena. Esto asegura que la cadena comience con el patrón que sigue a continuación.
 
 (...): Define un grupo de captura.
@@ -50,51 +33,6 @@ coma seguido de uno o dos dígitos decimales. El ? al final hace
 que este grupo sea opcional.
 
 €: Coincide con el carácter euro literal.
-
-<<<<<<< HEAD
-$: Representa el final de la cadena. Esto asegura que la cadena termine justo después del símbolo euro.
-*/
-=======
-x(?=y): Coincide con "x" solo si "x" va seguida de "y". Por ejemplo, /Jack(?=Sprat)/ reconocerá a 
-"Jack" solo si va seguida de "Sprat". /Jack(?=Sprat|Frost)/ encontrará a "Jack" solo si va seguida 
-de "Sprat" o "Frost". Sin embargo, ni "Sprat" ni "Frost" forman parte del resultado.
-
-x(?!y): reconoce la "x" solo si la "x" no va seguida de "y". Por ejemplo, /\d+(?!\.)/ reconoce un número
-solo si no va seguido de un punto decimal. /\d+(?!\.)/.exec('3.141') halla el "141" pero no el "3".
-
-(?<=y)x: encontrará "x" solo si "x" está precedida por "y". Por ejemplo, /(?<=Jack)Sprat/ reconoce a 
-"Sprat" solo si está precedido por "Jack". /(?<=Jack|Tom)Sprat/ empareja "Sprat" solo si está precedido 
-por "Jack" o "Tom". Sin embargo, ni "Jack" ni "Tom" forman parte del resultado.
-
-(?<!y)x: Reconoce la "x" solo si "x" no está precedida por "y". Por ejemplo, /(?<!-)\d+/ encuentra un 
-número solo si no está precedido por un signo menos. /(?<!-)\d+/.exec('3') encuentra el "3". 
-/(?<!-)\d+/.exec('-3') no lo reconoce porque el número está precedido por el signo menos.
-
-(?!.*ñ): no debe haber  ningún caracter 'ñ'  en ninguna parte de la cadena que sigue después de este punto.
-
-$: Representa el final de la cadena. Esto asegura que la cadena termine justo después del símbolo euro.
-
-
-
-x|y: Coincide con "x" o "y". Por ejemplo, /verde|roja/ reconoce el "verde" en "manzana verde" y 
-"roja" en "manzana roja".
-
-[xyz] [a-c]: Un juego de caracteres. Coincide con cualquiera de los caracteres incluidos. Puedes 
-especificar un rango de caracteres mediante el uso de un guión, pero si el guión aparece como el 
-primero o último caracter entre corchetes, se toma como un guión literal para incluirse en el juego 
-de caracteres como un caracter normal. También es posible incluir una clase de caracteres en un juego 
-de caracteres.Por ejemplo, [abcd] es lo mismo que [a-d]. Coincide con la "b" en "brisket" y la "c" en 
-"chop".Por ejemplo, [abcd-] y [-abcd] reconoce la "b" en "brisket", la "c" en "chop" y el "-" (guión) 
-en "non-profit".Por ejemplo, [\w-] es lo mismo que [A-Za-z0-9_-]. Ambos reconocen la "b" en "brisket", 
-la "c" en "chop" y la "n" en "non-profit".
-
-
-[^xyz] [^a-c]: Un juego de caracteres negado o complementado. Es decir, hallan cualquier cosa que no 
-esté encerrada entre corchetes. Puedes especificar un rango de caracteres mediante el uso de un guión, 
-pero si el guión aparece como el primero o último caracter entre corchetes, se toma como un guión 
-literal para incluirse en el juego de caracteres como un caracter normal. Por ejemplo, [^abc] es 
-lo mismo que [^a-c]. Inicialmente halla la "o" en "bacon" y la "h" en "chuleta".
-
 */
 
 /*
@@ -122,4 +60,3 @@ Diseñar mediante clases el siguiente problema. EN esta ciudad hay Empresarios q
      -anular una reserva de un cliente para una fecha
      -dar una baja de cliente   
 */
->>>>>>> b13c3ad7f6a5ec558c1dd5c0b7e8cbff9aa902f5
