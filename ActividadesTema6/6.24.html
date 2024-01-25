@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 6.24</title>
+</head>
+
+<body>
+
+    <title>Generador de Tablas Aleatorias</title>
+
+</body>
+
+<script>
+    /*
+    Elabora un programa que solicite al usuario el num
+    de filas y columnas, y genere esa tabla rellena con
+    numeros aleatorios. Finalmente, el programa debe 
+    recorrer la tabla y mostrar en consola cuantas filas
+    y columnas ha detectado
+    */
+
+    function generarTabla(filas, columnas) {
+            let tabla = [];
+
+            // Generar la tabla con números aleatorios
+            for (let i = 0; i < filas; i++) {
+                let fila = [];
+                for (let j = 0; j < columnas; j++) {
+                    fila.push(Math.floor(Math.random() * 100)); // Números aleatorios entre 0 y 99
+                }
+                tabla.push(fila);
+            }
+
+            return tabla;
+        }
+
+        function mostrarTabla(tabla) {
+            console.log("Tabla generada:");
+            for (let i = 0; i < tabla.length; i++) {
+                console.log(tabla[i].join('\t'));
+            }
+        }
+
+        function contarFilasColumnas(tabla) {
+            console.log("\nRecorriendo la tabla para contar filas y columnas:");
+
+            // Contar filas
+            console.log("Número de filas: " + tabla.length);
+
+            // Contar columnas (asumiendo que todas las filas tienen la misma cantidad de columnas)
+            if (tabla.length > 0) {
+                console.log("Número de columnas: " + tabla[0].length);
+            } else {
+                console.log("La tabla está vacía.");
+            }
+        }
+
+        // Solicitar al usuario el número de filas y columnas
+        const filas = parseInt(prompt('Ingrese el número de filas:'));
+        const columnas = parseInt(prompt('Ingrese el número de columnas:'));
+
+        // Generar la tabla y mostrarla
+        const tablaGenerada = generarTabla(filas, columnas);
+        mostrarTabla(tablaGenerada);
+
+        // Contar filas y columnas
+        contarFilasColumnas(tablaGenerada);
+
+   
+
+</script>
+
+</html>

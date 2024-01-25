@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 6.26</title>
+</head>
+
+<body>
+
+    <title>6.26</title>
+
+    <h1>Lista de Elementos</h1>
+
+    <ul id="miLista">
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+        <li>Elemento 4</li>
+        <li>Elemento 5</li>
+        <li>Elemento 6</li>
+        <li>Elemento 7</li>
+        <li>Elemento 8</li>
+        <li>Elemento 9</li>
+        <li>Elemento 10</li>
+    </ul>
+
+    <button onclick="ordenarLista()">Ordenar Lista</button>
+    <button onclick="desordenarLista()">Desordenar Lista</button>
+
+</body>
+
+<script>
+    /*
+    Crea una lista desordenada con diez elementos. Luego
+    pregunta al usuario si la quiere ordenada. Si pulsa
+    Aceptar la lista debe ordenarse alfabeticamente. Si pulsa
+    Cancelar la lista debe desordenarse aleatoriamente
+    */
+    function ordenarLista() {
+            let lista = document.getElementById('miLista');
+            let items = Array.from(lista.getElementsByTagName('li'));
+
+            items.sort(function (a, b) {
+                return a.textContent.localeCompare(b.textContent);
+            });
+
+            for (let i = 0; i < items.length; i++) {
+                lista.appendChild(items[i]);
+            }
+        }
+
+        function desordenarLista() {
+            let lista = document.getElementById('miLista');
+            let items = Array.from(lista.getElementsByTagName('li'));
+
+            for (let i = items.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [items[i], items[j]] = [items[j], items[i]];
+            }
+
+            for (let i = 0; i < items.length; i++) {
+                lista.appendChild(items[i]);
+            }
+        }
+   
+
+</script>
+
+</html>

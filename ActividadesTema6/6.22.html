@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 6.22</title>
+</head>
+
+<body>
+
+    <div>
+        <p>A partir de aquí se van a añadir contenido:</p>
+        <ol id="lista">
+        </ol>
+    </div>
+
+</body>
+
+<script>
+    /*
+   Crea una cookie que almacene dos datos solicitados al
+   usuario: su nombre y su edad. La cookie debe caducar 
+   en 30min
+    */
+
+    function crearCookie(nombre, valor, min) {
+        let date = new Date();
+        date.setTime(date.getTime() + (min * 60 * 1000));
+        let expiracion = 'expires=' + date.toUTCString();
+        document.cookie = nombre + '=' + valor + '; ' + expiracion;
+    }
+
+    function ejercicioCookie() {
+
+        let nombre = '';
+        let edad = 0;
+
+        //nombre
+        do {
+            let agregarNombre = document.createElement('li');
+            nombre = prompt('Introduce tu nombre:');
+            console.log(nombre);
+            agregarNombre.innerHTML = nombre;
+            if (nombre != null) {
+                document.getElementById('lista').appendChild(agregarNombre);
+                crearCookie('nombre', nombre, 30);
+            }
+        } while (nombre != null);
+
+        //edad
+        do {
+            let agregarEdad = document.createElement('li');
+            edad = prompt('Introduce tu edad:');
+            console.log(edad);
+            if (edad != null) {
+                agregarEdad.innerHTML = edad;
+                document.getElementById('lista').appendChild(agregarEdad);
+                crearCookie('edad', edad, 30);
+            }
+        } while (edad != null);
+
+    }
+
+    ejercicioCookie();
+
+</script>
+
+</html>
