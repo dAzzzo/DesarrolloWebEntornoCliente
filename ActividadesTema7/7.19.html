@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 7.19</title>
+</head>
+
+<body>
+
+    <h2>Eliga un número de su teclado:</h2>
+    <img id="imagen" alt="Imagen aleatoria"><br />
+
+
+</body>
+
+<script>
+    /*
+    Crea una pag HTML con un contador de una imagen. Debes tener
+    preparadas diez imagenes y en funcion de la tecla numerica que 
+    pulse (0, 1, 2, 3, 4, 5, 6, 7, 8, 9) debe aparecer esa imagen 
+    en el contenedor. Cuando se pulse otro número, debe vaciare el
+    contenedor y cargarse de nuevo su imagen correspondiente
+    */
+
+
+    function cambiarImg(srcPath) {
+        let image = document.getElementById("imagen");
+        image.setAttribute("src", srcPath);
+    }
+
+    document.addEventListener("keypress", (event) => {
+        console.log(event.key);
+        if (Number.isNaN(Number.parseInt(event.key))) {
+            return
+        }
+        cambiarImg(`img/${event.key}.jpg`);
+
+    });
+
+</script>
+
+</html>
