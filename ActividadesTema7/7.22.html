@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.22</title>
+    <style>
+       
+    </style>
+</head>
+
+<body>
+
+    <h2>Escriba lo que quiera:</h2>
+    <p id="parrafo"></p>
+
+    <button id="borrar">Eliminar contenido</button>
+
+    <script>
+        /*
+        Elabora un programa que vaya rellenando un parrafo de forma
+        dinámica con todas las letras que vaya pulsando el usuario
+        sobre cualquier elemento de la página. Al final del párrafo
+        debes incluir un botón para limpiar el contenido del párrafo
+        */
+        document.addEventListener('DOMContentLoaded', function () {
+            let parrafo = document.getElementById('parrafo');
+            let borrarElemento = document.getElementById('borrar');
+
+            //Aquí creo la función que permite escribir
+            function agregarLetra(event) {
+                let letra = event.key;
+                parrafo.textContent += letra;
+            }
+
+            //Función para borrar
+            function borrarParrafo() {
+               parrafo.textContent = '';
+            }
+
+            document.addEventListener('keydown', agregarLetra);
+
+            borrarElemento.addEventListener('click', borrarParrafo);
+        });
+    </script>
+
+</body>
+
+</html>

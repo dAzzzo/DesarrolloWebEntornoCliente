@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.21</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .delete {
+            cursor: pointer;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Lista Ordenada</h2>
+    <ul id="lista">
+    </ul>
+
+    <button id="agregar">Añadir Elemento</button>
+
+    <script>
+        /*
+         Escribe un programa que permita ordenar los elementos de una lista
+   desordenada. Cada elemento debe tener un aspa en su extremo derecho
+   para poder ser eliminado. Además, al final habrá un botón para
+   añadir un elemento. El texto del nuevo elemento se le debe pedir
+   al usuario por teclado.
+        */
+        document.addEventListener('DOMContentLoaded', function () {
+            let lista = document.getElementById('lista');
+            let agregarBtn = document.getElementById('agregar');
+
+            //Con la siguiente funcion se eliminan elementos de la lista
+            function eliminarElemento(event) {
+                event.target.parentElement.remove();
+            }
+
+            //Y con esta agregamos elementos
+            function agregarElemento() {
+                let nuevoElemento = prompt('Ingrese el nuevo elemento:');
+                if (nuevoElemento) {
+                    let li = document.createElement('li');
+                    //Busque en google un simbolo para la X
+                    li.innerHTML = `${nuevoElemento} <span class="delete">❌</span>`;
+                    li.querySelector('.delete').addEventListener('click', eliminarElemento);
+                    lista.appendChild(li);
+                }
+            }
+
+            //Aqui se agregan elementos
+            agregarBtn.addEventListener('click', agregarElemento);
+        });
+    </script>
+
+</body>
+
+</html>

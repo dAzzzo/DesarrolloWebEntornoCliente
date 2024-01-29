@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.24</title>
+    <style>
+body {
+      font-family: Arial, sans-serif;
+    }
+
+    #texto {
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin-right: 10px;
+      padding: 5px 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    </style>
+</head>
+
+<body>
+
+    <h2>Vocales de una sola vez:</h2>
+    <div id="texto">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada vel purus at mattis.
+            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+            Integer ultrices, lacus non efficitur suscipit, mi tortor dapibus nulla, a dapibus orci justo ac orci.
+        </p>
+    </div>
+
+    <div id="botones">
+        <button onclick="eliminarVocal('a')">Eliminar 'a'</button>
+        <button onclick="eliminarVocal('e')">Eliminar 'e'</button>
+        <button onclick="eliminarVocal('i')">Eliminar 'i'</button>
+        <button onclick="eliminarVocal('o')">Eliminar 'o'</button>
+        <button onclick="eliminarVocal('u')">Eliminar 'u'</button>
+        <button onclick="resetearPagina()">Resetear Página</button>
+    </div>
+
+    <script>
+        /*
+       Crea una aplicación que contenga un párrafo con mucho texto.
+        Debajo del párrafo debe aparecer un botón por cada vocal. Al 
+        pulsar sobre una vocal, esa vocal desaparecerá del texto
+        */
+
+        function eliminarVocal(vocal) {
+            let texto = document.querySelector('#texto p');
+            //ig permite que se eliminen Mayusculas y minusculas
+            texto.innerHTML = texto.innerHTML.replace(new RegExp(vocal, 'ig'), '');
+        }
+
+        function resetearPagina(){
+            location.reload();
+        }
+    </script>
+
+</body>
+
+</html>

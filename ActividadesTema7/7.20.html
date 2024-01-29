@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 7.20</title>
+    <style>
+        .caja {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            text-align: center;
+            margin: 20px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Caja dinamica:</h2>
+    <div id="caja" class="caja"></div>
+
+
+</body>
+
+<script>
+    /*
+   Crea una aplicacion cuyo codigo HTML contenga unicamente
+   una caja roja. Cada vez que el usuario pulse algunas
+   de las teclas de los cursores (arriba, abajo, derecha o izquierda)
+   la caja debe desplazarse 10 px en la direccion establecida
+    */
+
+    let caja = document.getElementById('caja');
+
+    document.addEventListener('keydown', (event) => {
+        let movimiento = 10;
+        switch (event.key) {
+            case 'ArrowUp':
+                caja.style.top = `${parseInt(caja.style.top || 0) - movimiento}px`;
+                break;
+            case 'ArrowDown':
+                caja.style.top = `${parseInt(caja.style.top || 0) + movimiento}px`;
+                break;
+            case 'ArrowLeft':
+                caja.style.left = `${parseInt(caja.style.left || 0) - movimiento}px`;
+                break;
+            case 'ArrowRight':
+                caja.style.left = `${parseInt(caja.style.left || 0) + movimiento}px`;
+                break;
+            default:
+                break;
+        }
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.25</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .caja {
+            height: 40px;
+            margin-bottom: 20px;
+        }
+
+        #verde {
+            width: 10px;
+            background-color: green;
+        }
+
+        #rojo {
+            width: 10px;
+            background-color: red;
+        }
+
+        #mensaje {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Juego de pulsaciones:</h2>
+    <div class="caja" id="verde"></div>
+    <div class="caja" id="rojo"></div>
+    <div id="mensaje"></div>
+
+    <script>
+        /*
+       Escribe un programa para simular la velocidad de pulsaciones 
+       de dos teclas. En pantalla aparecerán dos cajas, una verde y
+       otra roja, una debajo de otra. El alto de cada caja será de 40 
+       px y el ancho inicial de 10 px cada una. La primera caja 
+       incrementará su ancho 5 px cada vez que se pulse la tecla [a].
+       La segunda caja hará lo mismo cuando se pulse la tecla [ñ]. 
+       El juego termina cuando una de las cajas llega a 500px de ancho.
+       En ese momento deben desactivarse los eventos de ambas teclas
+       y mostrarse un mensaje bajo las cajas que ponga <<GANA VERDE>> o
+        <<GANA ROJO>>. Se trata de calcular con qué mano eres capaz de
+        realizar más pulsaciones.
+        */
+        var anchoVerde = 10;
+        var anchoRojo = 10;
+        var maxAncho = 500;
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'a' && anchoVerde < maxAncho) {
+                anchoVerde += 5;
+                document.getElementById('verde').style.width = anchoVerde + 'px';
+            } else if (event.key === 'ñ' && anchoRojo < maxAncho) {
+                anchoRojo += 5;
+                document.getElementById('rojo').style.width = anchoRojo + 'px';
+            }
+
+            if (anchoVerde >= maxAncho || anchoRojo >= maxAncho) {
+                document.removeEventListener('keydown', arguments.callee);
+                mostrarMensaje(anchoVerde >= maxAncho ? 'GANA VERDE' : 'GANA ROJO');
+            }
+        });
+
+        function mostrarMensaje(mensaje) {
+            document.getElementById('mensaje').textContent = mensaje;
+        }
+    </script>
+
+</body>
+
+</html>

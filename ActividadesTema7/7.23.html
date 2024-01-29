@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.23</title>
+    <style>
+        .caja {
+            background-color: #006bf7;
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            text-align: center;
+            margin: 20px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Intenta pulsar el cuadrado...</h2>
+    <div id="caja" class="caja">: P</div>
+
+    <script>
+        /*
+       Crea una rutina que no permita que  el ratón se coloque encima
+       de una caja azul de 100 x 100 px. Cada vez que el ratón intente 
+       colocarse encima, la posición de la caja debe cambiar aleatoriamente
+       por la página.
+        */
+
+        document.addEventListener('mouseover', function () {
+            let caja = document.getElementById('caja');
+           
+            let nuevaPosX = Math.floor(Math.random() * window.innerWidth);
+            let nuevaPosY = Math.floor(Math.random() * window.innerHeight);
+           
+            caja.style.left = nuevaPosX + 'px';
+            caja.style.top = nuevaPosY + 'px';
+        
+        });
+    </script>
+
+</body>
+
+</html>
