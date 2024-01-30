@@ -8,76 +8,143 @@
     <style>
         body {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+            margin: 10px;
+            border: 2px solid white;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
             align-items: center;
-            font-family: Arial, sans-serif;
-        }
-
-        .caja {
-            height: 40px;
-            margin-bottom: 20px;
-        }
-
-        #verde {
-            width: 10px;
-            background-color: green;
-        }
-
-        #rojo {
-            width: 10px;
-            background-color: red;
-        }
-
-        #mensaje {
             font-size: 18px;
-            font-weight: bold;
+            color: white;
         }
     </style>
 </head>
 
 <body>
 
-    <h2>Juego de pulsaciones:</h2>
-    <div class="caja" id="verde"></div>
-    <div class="caja" id="rojo"></div>
-    <div id="mensaje"></div>
-
     <script>
+
         /*
-       Escribe un programa para simular la velocidad de pulsaciones 
-       de dos teclas. En pantalla aparecerán dos cajas, una verde y
-       otra roja, una debajo de otra. El alto de cada caja será de 40 
-       px y el ancho inicial de 10 px cada una. La primera caja 
-       incrementará su ancho 5 px cada vez que se pulse la tecla [a].
-       La segunda caja hará lo mismo cuando se pulse la tecla [ñ]. 
-       El juego termina cuando una de las cajas llega a 500px de ancho.
-       En ese momento deben desactivarse los eventos de ambas teclas
-       y mostrarse un mensaje bajo las cajas que ponga <<GANA VERDE>> o
-        <<GANA ROJO>>. Se trata de calcular con qué mano eres capaz de
-        realizar más pulsaciones.
+       Juguemos a adivinar las parejas. Debes distribuir en la página una cuadricula
+       de 6x5 cajas. De las 30 cajas habrá 15 distintas. Cada par de cajas será de 
+       un color distinto. Inicialmente todas las cajas aparecerán negras. Cuando el 
+       usuario pinche sobre una caja, se revelará su auténtico color. En ese momento
+       debes arrastrar la caja al lugar donde creas que se encuentra su pareja. Si 
+       aciertas, ambas cajas volverán a sus estado inicial. El programa debe detectar
+       cuándo están todas las cajas emparejadas y cuánto tiempo has tardado resolverlo.
         */
-        var anchoVerde = 10;
-        var anchoRojo = 10;
-        var maxAncho = 500;
 
-        document.addEventListener('keydown', function (event) {
-            if (event.key === 'a' && anchoVerde < maxAncho) {
-                anchoVerde += 5;
-                document.getElementById('verde').style.width = anchoVerde + 'px';
-            } else if (event.key === 'ñ' && anchoRojo < maxAncho) {
-                anchoRojo += 5;
-                document.getElementById('rojo').style.width = anchoRojo + 'px';
-            }
+        let boxes = [];
+        let selectedBoxes = [];
+        let pairsFound = 0;
+        let startTime;
 
-            if (anchoVerde >= maxAncho || anchoRojo >= maxAncho) {
-                document.removeEventListener('keydown', arguments.callee);
-                mostrarMensaje(anchoVerde >= maxAncho ? 'GANA VERDE' : 'GANA ROJO');
-            }
-        });
-
-        function mostrarMensaje(mensaje) {
-            document.getElementById('mensaje').textContent = mensaje;
+        // Función para inicializar el juego
+        function initializeGame() {
+            const colors = generateRandomColors();
+            const shuffledColors = shuffleArray(colors);
+            createBoxes(shuffledColors);
+            startTime = new Date();
         }
+
+        // Generar colores aleatorios para las cajas
+        function generateRandomColors() {
+            const colors = [];
+            for (let i = 0; i < 15; i++) {
+                const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                colors.push(randomColor, randomColor);
+            }
+            return colors;
+        }
+
+        // Barajar un array
+        function shuffleArray(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        // Crear las cajas en el DOM
+        function createBoxes(colors) {
+            const container = document.body;
+
+            for (let i = 0; i < 30; i++) {
+                const box = document.createElement('div');
+                box.classList.add('box');
+                box.dataset.color = colors[i];
+                box.addEventListener('click', handleClick);
+                container.appendChild(box);
+                boxes.push(box);
+            }
+        }
+
+        // Manejar el clic en una caja
+        function handleClick(event) {
+            const clickedBox = event.target;
+
+            if (selectedBoxes.length < 2 && !selectedBoxes.includes(clickedBox)) {
+                revealBox(clickedBox);
+
+                selectedBoxes.push(clickedBox);
+
+                if (selectedBoxes.length === 2) {
+                    setTimeout(checkMatch, 500);
+                }
+            }
+        }
+
+        // Revelar el color de la caja
+        function revealBox(box) {
+            box.style.backgroundColor = box.dataset.color;
+            box.innerText = box.dataset.color;
+        }
+
+        // Comprobar si las dos cajas seleccionadas son un par
+        function checkMatch() {
+            const [box1, box2] = selectedBoxes;
+
+            if (box1.dataset.color === box2.dataset.color) {
+                pairsFound++;
+                if (pairsFound === 15) {
+                    const endTime = new Date();
+                    const elapsedTime = (endTime - startTime) / 1000; // en segundos
+                    alert(`¡Felicidades! Has encontrado todas las parejas en ${elapsedTime} segundos.`);
+                    resetGame();
+                } else {
+                    resetSelectedBoxes();
+                }
+            } else {
+                resetSelectedBoxes();
+            }
+        }
+
+        // Restablecer las cajas seleccionadas
+        function resetSelectedBoxes() {
+            selectedBoxes.forEach(box => {
+                box.style.backgroundColor = 'black';
+                box.innerText = '';
+            });
+            selectedBoxes = [];
+        }
+
+        // Reiniciar el juego
+        function resetGame() {
+            boxes.forEach(box => {
+                box.remove();
+            });
+            boxes = [];
+            pairsFound = 0;
+            initializeGame();
+        }
+
+        // Inicializar el juego al cargar la página
+        window.onload = initializeGame;
     </script>
 
 </body>
