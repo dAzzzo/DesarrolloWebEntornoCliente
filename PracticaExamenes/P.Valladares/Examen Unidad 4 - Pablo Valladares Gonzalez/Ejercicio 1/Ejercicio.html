@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="./Icono.ico" type="image/x-icon" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Ejercicio 1</title>
+    </head>
+    <body id="cuerpo" class="blanco">
+        <h1><u>Ahorcado</u></h1>
+        <p>
+            Crea un programa que al menos contenga una funcion que reciba como parametro un array con al menos 8
+            palabras posibles de longitud variable (las cuales se les pedira al usuario por teclado para poder crearlo).
+            Una vez creado el array debes regularizar el array comprobando que todas las palabras son validas (tienen
+            una longitud de al menos 6 caracteres) y las pondras en mayusculas; si no es valido deberias volver a
+            introducir las palabras. En cada ejecucion del programa se obtiene una palabra del array aleatoria, para que
+            el usuario la intenta adiviniar introduciendo una. Por cada intento sucesivo, el programa debe ir mostrando
+            como pista la palabra de forma parcial, empezando con la primera letra y agregando una letra a la vez. El
+            programa debe terminar cuando se adivina la palabra ganando o cuando se muestran todas las letras de la
+            misma perdiendo
+        </p>
+
+        <footer>
+            <div class="imagen">
+                <img src="./EjecutivoAzul.png" alt="" />
+                <button id="cambiarEstilo" class="btn btn-dark" onclick="cambiar()">Cambiar estilo</button>
+            </div>
+            <div class="contenedor">
+                <span class="copyright">&copy;2023, Pablo Valladares Gonzalez. Todos los derechos reservados.</span>
+            </div>
+        </footer>
+        <script src="./script.js"></script>
+    </body>
+</html>

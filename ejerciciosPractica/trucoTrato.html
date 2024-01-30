@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truco o trato</title>
+</head>
+
+<body>
+
+    <button id="timbre">Timbre</button>
+    <button id="volver">Volver</button>
+
+    <script>
+        /*
+        Truco o trato.
+
+    Estamos en halloween y los niños de tu barrio se quieren ir a pedir caramelos. 
+
+    - Haz una funcion autoejecutable que haga que te pregunte si estas disfrazado (por console.log)
+
+    - Haz una funcion por expresion/anonima (a tu eleccion) que reciba como parametro un numero, si el numero es par significa que estas disfrzado (devuelve true) si el numero es impar, no lo estas (devuelve false).
+
+    - Haz una funcion clausura en la que pidas caramelos (un numero random del 0 al 5) y guardes los datos fuera de la funcion en un array llamado chucherias, la funcion se usara cada vez que pulses un boton llamado "timbre".
+
+    - Haz una funcion que cuando pulses un boton llamado "volver" te salga una diciendo que has vuelto a casa.
+        */
+
+        let nombre = prompt('¿Cuál es tu nombre jovencito?');
+
+        //funcion autoejecutable
+        (function () {
+            console.log('¿Hoy te has difradado ' + nombre + '?');
+        })();
+
+        //anonima o lambda
+        let respuestaDisfraz = function () {
+            let respuesta = parseInt(prompt('Nº Par = true, Nº Impar = false'));
+            if (respuesta % 2 === 0) {
+                console.log('Si voy disfrazado señora, ¿esque no lo ves?');
+            } else if (respuesta % 2 !== 0) {
+                console.log('No voy disfrazado señora, ¿o acaso me ve la cara de tonto?');
+            } else {
+                console.log('ERROR, respuesta invalida');
+            }
+        }
+        respuestaDisfraz();
+
+        //clausula, pero tuve que añadirle una funcion autoejecutable
+        let chucherias = [];
+        (function () {
+            function calcularCantidadCaramelos() {
+                // Número aleatorio de 0 al 5
+                let cantidad = Math.floor(Math.random() * 6);
+                chucherias.push(cantidad);
+                console.log(`El ni ha recaudado: ${cantidad} caramelos`);
+            }
+            let timbre = document.getElementById('timbre');
+            timbre.addEventListener('click', calcularCantidadCaramelos);
+        })();
+
+
+
+        //evento
+        function pulsarVolver() {
+            console.log('El niño ha vuelto sano y salvo a casa.');
+        }
+        let volver = document.getElementById('volver');
+        volver.addEventListener('click', pulsarVolver);
+
+    </script>
+</body>
+
+</html>
