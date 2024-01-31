@@ -42,40 +42,41 @@
        cuándo están todas las cajas emparejadas y cuánto tiempo has tardado resolverlo.
         */
 
+        //Ya se que el ejercicio pide 30 colores cajas y 15 colores, pero como son mucho
+        //hare menos para que sea más facil ganar
         let boxes = [];
         let selectedBoxes = [];
         let pairsFound = 0;
         let startTime;
 
-        // Función para inicializar el juego
         function initializeGame() {
-            const colors = generateRandomColors();
-            const shuffledColors = shuffleArray(colors);
+            let colors = generateRandomColors();
+            let shuffledColors = shuffleArray(colors);
             createBoxes(shuffledColors);
             startTime = new Date();
         }
 
-        // Generar colores aleatorios para las cajas
+        //Se generan los colores de forma aleatorio cn hexadecimal
         function generateRandomColors() {
-            const colors = [];
-            for (let i = 0; i < 15; i++) {
-                const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            let colors = [];
+            for (let i = 0; i < 5; i++) {
+                let randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
                 colors.push(randomColor, randomColor);
             }
             return colors;
         }
 
-        // Barajar un array
+        //Se baraja el array como una baraja de cartas
         function shuffleArray(array) {
             return array.sort(() => Math.random() - 0.5);
         }
 
-        // Crear las cajas en el DOM
+        //Dentro del dom se usa la caja
         function createBoxes(colors) {
-            const container = document.body;
+            let container = document.body;
 
-            for (let i = 0; i < 30; i++) {
-                const box = document.createElement('div');
+            for (let i = 0; i < 10; i++) {
+                let box = document.createElement('div');
                 box.classList.add('box');
                 box.dataset.color = colors[i];
                 box.addEventListener('click', handleClick);
@@ -84,9 +85,9 @@
             }
         }
 
-        // Manejar el clic en una caja
+        //manejo el clic en una caja
         function handleClick(event) {
-            const clickedBox = event.target;
+            let clickedBox = event.target;
 
             if (selectedBoxes.length < 2 && !selectedBoxes.includes(clickedBox)) {
                 revealBox(clickedBox);
@@ -99,21 +100,21 @@
             }
         }
 
-        // Revelar el color de la caja
+        //Con esto se revela el color de la caja
         function revealBox(box) {
             box.style.backgroundColor = box.dataset.color;
             box.innerText = box.dataset.color;
         }
 
-        // Comprobar si las dos cajas seleccionadas son un par
+        //Compruebo si las cajas son par
         function checkMatch() {
-            const [box1, box2] = selectedBoxes;
+            let [box1, box2] = selectedBoxes;
 
             if (box1.dataset.color === box2.dataset.color) {
                 pairsFound++;
                 if (pairsFound === 15) {
-                    const endTime = new Date();
-                    const elapsedTime = (endTime - startTime) / 1000; // en segundos
+                    let endTime = new Date();
+                    let elapsedTime = (endTime - startTime) / 1000;
                     alert(`¡Felicidades! Has encontrado todas las parejas en ${elapsedTime} segundos.`);
                     resetGame();
                 } else {
@@ -124,7 +125,7 @@
             }
         }
 
-        // Restablecer las cajas seleccionadas
+        //Restablezco las cajas seleccionadas
         function resetSelectedBoxes() {
             selectedBoxes.forEach(box => {
                 box.style.backgroundColor = 'black';
@@ -133,7 +134,7 @@
             selectedBoxes = [];
         }
 
-        // Reiniciar el juego
+        //Reinicio de juego
         function resetGame() {
             boxes.forEach(box => {
                 box.remove();
@@ -143,10 +144,11 @@
             initializeGame();
         }
 
-        // Inicializar el juego al cargar la página
+        //Con window inicias el juego nada más cargar la pantalla
         window.onload = initializeGame;
     </script>
 
 </body>
 
 </html>
+
