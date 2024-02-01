@@ -43,33 +43,107 @@
     Pasajero => ["Juanjo", "vivo"] Array que tiene dos datos, el primero es para el 
     nombre, el segundo para el estado.
         */
-        let tren = [['Juanjo', 'vivo'],['Daza', 'muerto'], ['Pablo', 'vivo'], ['Ana', 'muerto']];
+        let tren = [['Juanjo', 'vivo'], ['Daza', 'muerto'], ['Pablo', 'vivo'], ['Ana', 'muerto']];
         console.log(tren);
 
-        function añadirPasajero(tren){
+        /*
+        Haz una funcion que reciba el array del tren y añadas un pasajero con un nombre 
+        (el que quieras) y este vivo.
+        */
+        function añadirPasajero(tren) {
             //El for no es necesario en este caso xq solo meto 1, pero si hubiese más se cambia el nº y punto
-            for(let i=0;i<1;i++){
-            let nuevoPasajero = prompt('¿Cómo se llama el nuevo pasajero?');
-            let saludPasajero = prompt('Por lo que más quieras, dime que el pasajero está vivo.');
+            for (let i = 0; i < 1; i++) {
+                let nuevoPasajero = prompt('¿Cómo se llama el nuevo pasajero?');
+                let saludPasajero = prompt('Por lo que más quieras, dime que el pasajero está vivo.');
 
-            if(saludPasajero == 'vivo' || saludPasajero == 'Vivo'){
-                console.log('Menos mal que este si está vivo.');
-            }else{
-                console.log('Mira que te lo dije, no puedes darme un pasajero fiambre.');
+                if (saludPasajero == 'vivo' || saludPasajero == 'Vivo') {
+                    console.log('\nMenos mal que este si está vivo.');
+                } else {
+                    console.log('\nMira que te lo dije, no puedes darme un pasajero fiambre.');
+                }
+
+                //Agrego los datos
+                tren.push([nuevoPasajero, saludPasajero]);
             }
-
-            //Agrego los datos
-            tren.push([nuevoPasajero, saludPasajero]);
+            console.log(tren);
         }
-        console.log(tren);
-    }
-    añadirPasajero(tren);
+        añadirPasajero(tren);
 
-    function contarPasajeros(tren){
-        let numPasajeros = tren.length;
-        console.log('En el tren hay ' + numPasajeros + ' pasajeros.');
-    }
-    contarPasajeros(tren);
+        /*
+         Haz una funcion para mostrar cuantos pasajeros tiene el tren.
+        */
+        function contarPasajeros(tren) {
+            let numPasajeros = tren.length;
+            console.log('\nEn el tren hay ' + numPasajeros + ' pasajeros.');
+        }
+        contarPasajeros(tren);
+
+        /*
+        Haz una funcion para mostrar solo el nombre de todos los pasajero del tren. 
+        Haz otra para mostrar solamente el estado de cada pasajero.
+        */
+        function nombrePasajero() {
+            for (let [key, value] of tren) {
+                console.log('\nNombre de pasajero: ' + key + '\n');
+            }
+        }
+        nombrePasajero();
+
+        function vidaPasajero() {
+            for (let [key, value] of tren) {
+                console.log('Estado de salud del pasajero: ' + value);
+            }
+        }
+        vidaPasajero();
+
+        /*
+        Haz una funcion para mostrar el nombre de un solo pasajero del tren y tu puedas 
+        escoger cual introduciendo el numero.
+        */
+        function escogerPasajero() {
+            let numPasajero = prompt('Introduce un nº del 1 al 5, mostraré el nombre del pasajero:');
+            for (let i = 0; i < numPasajero - 1; i++) {
+                console.log(tren[i][0]);
+            }
+        }
+        escogerPasajero();
+
+        /*
+        Haz una funcion para mostrar el estado de un pasajero en concreto buscandolo 
+        por su nombre.
+        */
+        let cualEstado = function buscarXnombre(tren) {
+            let buscaNombre = prompt('Dame el nombre de uno de los pasajeros y te dire si está vivo o muerto...');
+            for (let i in tren) {
+                if (tren[i][0] == buscaNombre) {
+                    return tren[i][1];
+                }
+            }
+        }
+        console.log(cualEstado(tren));
+
+        /*
+        Haz una funcion para matar a un pasajero (cambiar su estado de vivo a muerto).
+        */
+        let deathNote = function matarPasajero(tren) {
+            let proxMuerto = prompt('¿A qué pasajero te gustaria mandar al otro barrio?');
+            for (let i in tren) {
+                if (tren[i][0] == proxMuerto) {
+                    tren[i][1] = 'muerto';
+                }
+            }
+        }
+        console.log(deathNote(tren));
+
+        /*
+        Haz una funcion para mostrar todos los nombres y estados de todos los pasajeros.
+        */
+        function todoTodito(tren) {
+            for (let [key, value] of tren) {
+                console.log('El nombre del pasajero es: ' + key + '  y el estado de salud del pasajero: ' + value);
+            }
+        }
+        todoTodito();
     </script>
 </body>
 
