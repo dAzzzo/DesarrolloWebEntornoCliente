@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partida de domino</title>
+</head>
+
+<body>
+
+    <button id="timbre">Timbre</button>
+    <button id="volver">Volver</button>
+
+    <script>
+        /*
+        Partida de dominos:
+
+- Crea un array bidimensional que se llamara fichas, este 
+array tendra varios arrays que seran cada fichas, las filas 
+tienen 2 valores. Ejemplo: [ ["1", "1"], ["1","2"]] (del 1 al 6)
+
+- Crea una funcion anonima que de fichas, es decir, le dara 
+fichas a un jugador (que sera un array), las fichas que se 
+han dado a un jugador deberan borrarse del array de fichas
+
+- Haz una funcion flecha para poner las fichas en el tablero 
+(console.log) deberas comprobar que la ficha que vas a poner 
+tenga un numero igual a la ficha que este en juego.
+
+- Haz una funcion autoejecutable que ponga una ficha en el 
+tablero automaticamente para empezar la partida
+        */
+        let fichas = [
+            ["1", "1"], ["1", "2"], ["2", "1"], ["2", "2"], ["3", "1"], ["3", "2"], ["4", "1"], ["4", "2"], ["5", "1"], ["5", "2"], ["6", "1"], ["6", "2"]];
+
+        /*
+         Crea una funcion anonima que de fichas, es decir, le dara 
+        fichas a un jugador (que sera un array), las fichas que se 
+        han dado a un jugador deberan borrarse del array de fichas
+        */
+        let darFichas = function (jugador, cantidad) {
+            if (fichas.length >= cantidad) {
+                let fichasParDar = fichas.slice(0, cantidad);
+                jugador.push(...fichasParDar);
+                fichas.splice(0, cantidad);
+                return 'Fichas dadas al jugador: ' + JSON.stringify(fichasParDar);
+            } else {
+                return 'No hay fichas disponibles';
+            }
+        };
+        let jugador1 = [];
+        console.log(darFichas(jugador1, 3));
+        console.log("Fichas restantes:", JSON.stringify(fichas));
+        console.log("Fichas del jugador1:", JSON.stringify(jugador1));
+
+        /*
+        Haz una funcion flecha para poner las fichas en el tablero 
+        (console.log) deberas comprobar que la ficha que vas a poner 
+        tenga un numero igual a la ficha que este en juego.
+        */
+        let fichaTablero = (jugador, fichaEnJuego) => {
+            if (fichas.length > 0) {
+                let fichaAcolocar = jugador[0];
+
+                if (fichaAcolocar[0] === fichaEnJuego[0]) {
+                    console.log('Ficha colocada en el tablero: ', JSON.stringify(fichaAcolocar));
+                    //Uso shift para eliminar dicha ficha
+                    jugador.shift();
+                } else {
+                    console.log('La ficha no coincide con la ficha del juego.');
+                }
+            } else {
+                console.log('El jugador no tiene fichas para colocar');
+            }
+        };
+        let jugador2 = [["1", "1"], ["2", "2"], ["3", "1"]];
+        let fichaEnJuego = ["1", "2"];
+
+        fichaTablero(jugador1, fichaEnJuego);
+        console.log("Fichas restantes del jugador1:", JSON.stringify(jugador1));
+    </script>
+</body>
+
+</html>

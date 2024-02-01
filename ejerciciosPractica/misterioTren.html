@@ -139,11 +139,26 @@
         Haz una funcion para mostrar todos los nombres y estados de todos los pasajeros.
         */
         function todoTodito(tren) {
-            for (let [key, value] of tren) {
-                console.log('El nombre del pasajero es: ' + key + '  y el estado de salud del pasajero: ' + value);
+            for (let [nombre, estado] of tren) {
+                console.log('El nombre del pasajero es: ' + nombre + '  y el estado de salud del pasajero: ' + estado);
             }
         }
-        todoTodito();
+        todoTodito(tren);
+
+        /*
+        Haz una funcion para eliminar a todos los pasajeros muertos del array
+        */
+        console.log('Tren original: ', tren);
+       function borrarMuertos(tren){
+        for (let i=0; i<tren.length;i++) {
+                if (tren[i][1] == 'muerto') {
+                    tren.splice(i,1);
+                    i--;
+                }
+            }
+       }
+       borrarMuertos(tren);
+       console.log('Nuevo tren: ', tren);
     </script>
 </body>
 
