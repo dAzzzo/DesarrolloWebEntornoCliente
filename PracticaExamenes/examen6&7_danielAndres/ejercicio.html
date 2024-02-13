@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 y medio</title>
+    <style>
+        body {
+            background-image: './cartas/tapete.jpg';
+            background-color: #0f6b0f;
+        }
+
+        .Cartas {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .Carta {
+            width: 50px;
+            height: 80px;
+            margin: 5px;
+            border: 1px solid black;
+            background-color: lightgray;
+            text-align: center;
+            line-height: 80px;
+            cursor: pointer;
+        }
+
+        button {
+            margin-right: 50px;
+        }
+
+        button img {
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Juego del 7 y medio</h1>
+    <div id="jugador">
+        <h2>Jugador</h2>
+        <h4>En caso de querer resetear, pulsa la tecla 'f'</h4>
+        <div class="Cartas" id="jugadorCartas"></div>
+        <p id="jugadorPuntuacion">Puntuacion: 0</p>
+        <button id="PedirCarta"><img src="./cartas/trasera_jug.jpg"></button>
+        <button id="Plantarse"><img src="./cartas/trasera.jpg"></button>
+
+    </div>
+    <div id="banca">
+        <h2>Banca</h2>
+        <div class="Cartas" id="bancaCartas"></div>
+        <p id="bancaPuntuacion">Puntuacion: 0</p>
+    </div>
+
+    <script>
+        //Creacion de los array de carta y los valores
+        let Cartas = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+        let CartaValues = {
+            '1': 1,
+            '2': 2,
+            '3': 3,
+            '4': 4,
+            '5': 5,
+            '6': 6,
+            '7': 7,
+            '8': 0.5,
+            '9': 0.5,
+            '10': 0.5
+        };
+
+        let jugadorPuntuacion = 0;
+        let bancaPuntuacion = 0;
+        let jugadorCartas = [];
+        let bancaCartas = [];
+
+        //Primero generamos las cartas aleatoriamente
+        function getRandomCarta() {
+            let index = Math.floor(Math.random() * Cartas.length);
+            let Carta = Cartas.splice(index, 1)[0];
+            return Carta;
+        }
+
+        //Una vvez realizado lo anterior, calculamos la puntuacion
+        function calculatePuntuacion(Cartas) {
+            let Puntuacion = 0;
+            for (let Carta of Cartas) {
+                Puntuacion += CartaValues[Carta];
+            }
+            return Puntuacion;
+        }
+
+        //se ponen las cartas
+        function displayCartas(Cartas, container) {
+            let CartasDiv = document.getElementById(container);
+            CartasDiv.innerHTML = '';
+            for (let Carta of Cartas) {
+                let CartaDiv = document.createElement('div');
+                CartaDiv.classList.add('Carta');
+                CartaDiv.textContent = Carta;
+                CartasDiv.appendChild(CartaDiv);
+            }
+        }
+
+        //Se comprueba el ganador
+        function ComprobarGanador() {
+            if (jugadorPuntuacion <= 7.5 && (bancaPuntuacion > 7.5 || bancaPuntuacion < jugadorPuntuacion)) {
+                alert("El jugador GANA!");
+                document.body.innerHTML += '<img src="./cartas/medalla.jpg alt="medalla" />';
+                document.cookie = "winner=jugador;expires=" + new Date(new Date().getTime() + 5 * 60 * 1000).toUTCString();
+            } else if (bancaPuntuacion <= 7.5 && (jugadorPuntuacion > 7.5 || bancaPuntuacion > jugadorPuntuacion)) {
+                alert("La banca GANA!");
+                document.body.innerHTML += '<img src="./cartas/medalla.jpg alt="medalla" />';
+                document.cookie = "winner=banca;expires=" + new Date(new Date().getTime() + 5 * 60 * 1000).toUTCString();
+            } else {
+                alert("VAMOS A JUGAR");
+            }
+        }
+
+        //Evento para pedir carta
+        document.getElementById('PedirCarta').addEventListener('click', function () {
+            let Carta = getRandomCarta();
+            jugadorCartas.push(Carta);
+            jugadorPuntuacion = calculatePuntuacion(jugadorCartas);
+            displayCartas(jugadorCartas, 'jugadorCartas');
+            document.getElementById('jugadorPuntuacion').textContent = 'Puntuacion: ' + jugadorPuntuacion.toFixed(1);
+            if (jugadorPuntuacion > 7.5) {
+                alert("jugador PIERDE!");
+                checkWinner();
+            }
+        });
+
+        //evento para plantrse
+        document.getElementById('Plantarse').addEventListener('click', function () {
+            while (bancaPuntuacion < jugadorPuntuacion && bancaPuntuacion <= 7.5) {
+                let Carta = getRandomCarta();
+                bancaCartas.push(Carta);
+                bancaPuntuacion = calculatePuntuacion(bancaCartas);
+                displayCartas(bancaCartas, 'bancaCartas');
+                document.getElementById('bancaPuntuacion').textContent = 'Puntuacion: ' + bancaPuntuacion.toFixed(1);
+            }
+            if (bancaPuntuacion > 7.5) {
+                alert("banca PIERDE!");
+            }
+            checkWinner();
+        });
+
+        //evento de la f
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'f') {
+                location.reload();
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

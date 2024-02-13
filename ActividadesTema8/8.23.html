@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8.23</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Escribe una aplicacion que contenga un switch con siete opciones y 
+        dentro de cada una de ellas crea un objeto con cada uno de los siete 
+        constructores que hemos visto para definir cada uno de los siete tipos
+        de errores que hemos citado. Luego utiliza una unica estructura try...catch
+        que sea capaz de gestionar cualquiera de ellos:
+        EvalError
+        InternalError
+        RangeError
+        ReferenceError
+        SyntaxError
+        TypeError
+        URIError
+        */
+
+        let ejemplos = 'Error';
+        switch (ejemplos) {
+            case EvalError:
+                try {
+                    throw new EvalError("Hello", "someFile.js", 10);
+                } catch (e) {
+                    console.log(e instanceof EvalError); // true
+                    console.log(e.message);
+                }
+
+            case InternalError:
+                function loop(x) {
+                    if (x >= 10)
+                        // "x >= 10" es la condición de salida
+                        return;
+                    // hacer cosas
+                    loop(x + 1); // la llamada recursiva
+                }
+                loop(0);
+
+
+            case RangeError:
+                function check(n) {
+                    if (!(n >= -500 && n <= 500)) {
+                        throw new RangeError("El argumento debe estar entre -500 y 500.");
+                    }
+                }
+
+                try {
+                    check(2000);
+                } catch (error) {
+                    if (error instanceof RangeError) {
+                        // Manejar el error
+                    }
+                }
+
+            case ReferenceError:
+                try {
+                    let a = undefinedVariable;
+                } catch (e) {
+                    console.log(e instanceof ReferenceError); // true
+                    console.log(e.message); // "undefinedVariable no está definida"
+                }
+
+            case SyntaxError:
+                try {
+                    throw new SyntaxError("Hello", "someFile.js", 10);
+                } catch (e) {
+                    console.error(e instanceof SyntaxError); // true
+                    console.error(e.message); // Hello
+                }
+
+            case TypeError:
+                try {
+                    throw new TypeError("Hello", "someFile.js", 10);
+                } catch (e) {
+                    console.log(e instanceof TypeError); // Respuesta: true
+                    console.log(e.message); // Respuesta: "Hello"
+                }
+
+            case URIError:
+                try {
+                    throw new URIError("Hello", "someFile.js", 10);
+                } catch (e) {
+                    console.log(e instanceof URIError); // true
+                    console.log(e.message); // "Hello"
+                }
+
+
+        }
+
+    </script>
+</body>
+
+</html>

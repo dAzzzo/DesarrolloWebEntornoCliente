@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8.22</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Elabora un algoritmo en el que pueda verse funcionando cada uno de los
+        tres tipos de errores que pueden darse en una aplicacion web: error,
+        excepcion y aviso
+        */
+
+        let frase = parseInt(prompt('Escribe un numero del 1 al 10'));
+
+        if (frase > 10 || frase < 1) {
+            error('Ese numero no vale');
+        } else if (frase == 10 || frase == 1) {
+            alert('Numero muy justo cuidado, no superes el 10 o bajes del 1');
+        }
+
+        console.log(frase);
+
+    </script>
+</body>
+
+</html>
