@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8.27</title>
+</head>
+<body>
+    <script>
+        /*
+        Repasa las posibilades de la API FileSystem y elabora
+        un pequeño programa que haga uso de alguna de las 
+        funciones incluidas en el modulo para ejemplificar su uso
+        */
+       // Código de ejemplo de la API FileSystem
+window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+
+if (window.requestFileSystem) {
+    // Solicitamos acceso al sistema de archivos
+    window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function(fs) {
+        console.log('Sistema de archivos solicitado correctamente', fs);
+
+        // Crear un archivo
+        fs.root.getFile('ejemplo.txt', {create: true}, function(fileEntry) {
+            console.log('Archivo creado correctamente', fileEntry);
+
+            // Escribir en el archivo
+            fileEntry.createWriter(function(fileWriter) {
+                fileWriter.onwriteend = function() {
+                    console.log('Datos escritos correctamente en el archivo');
+                };
+                fileWriter.onerror = function(error) {
+                    console.error('Error al escribir en el archivo', error);
+                };
+                var data = new Blob(['Este es un archivo de ejemplo'], {type: 'text/plain'});
+                fileWriter.write(data);
+            }, function(error) {
+                console.error('Error al crear el escritor del archivo', error);
+            });
+        }, function(error) {
+            console.error('Error al crear el archivo', error);
+        });
+    }, function(error) {
+        console.error('Error al solicitar acceso al sistema de archivos', error);
+    });
+} else {
+    console.error('La API FileSystem no está disponible en este navegador');
+}
+
+    </script>
+</body>
+</html>

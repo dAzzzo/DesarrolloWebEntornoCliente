@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8.24</title>
+</head>
+<body>
+    <script>
+        /*
+        Crea un programa que haga uso de la estructura try...catch...finally
+        incluyendo un return en cada uno de los tres bloques. Lanza un error
+        que deba capturar el bloque catch y observa los resultados devueltos.
+        ¿A qué conclusiones llegas?
+        */
+        function test() {
+    try {
+        console.log("En el bloque try");
+        return "Valor desde el bloque try";
+    } catch (error) {
+        console.log("En el bloque catch");
+        return "Valor desde el bloque catch";
+    } finally {
+        console.log("En el bloque finally");
+        return "Valor desde el bloque finally";
+    }
+}
+
+console.log(test());
+
+
+
+    </script>
+</body>
+</html>

@@ -27,42 +27,42 @@
     function crearCookie(nombre, valor, min) {
         let date = new Date();
         date.setTime(date.getTime() + (min * 60 * 1000));
-        let expiracion = 'expires=' + date.toUTCString();
-        document.cookie = nombre + '=' + valor + '; ' + expiracion;
+        /*        
+    La función toUTCString() es un método de los objetos 
+    Date en JavaScript que devuelve una representación de 
+    cadena de fecha y hora en formato UTC (Tiempo Universal 
+    Coordinado).
+        */
+        let expiracion = 'Experes= ' + date.toUTCString();
+        document.cookie = nombre + '=' + valor + '; ' + expiracion + ' en ' + min + ' ;path=/'; // Agrega path para asegurar que la cookie esté disponible en todo el sitio
     }
 
-    function ejercicioCookie() {
-
+    function ejercicioCookie(){
         let nombre = '';
         let edad = 0;
 
-        //nombre
-        do {
-            let agregarNombre = document.createElement('li');
-            nombre = prompt('Introduce tu nombre:');
-            console.log(nombre);
-            agregarNombre.innerHTML = nombre;
-            if (nombre != null) {
-                document.getElementById('lista').appendChild(agregarNombre);
-                crearCookie('nombre', nombre, 30);
+        //solitar nombre
+        do{
+            nombre = prompt('Introduce tu nombre');
+            if(nombre !== null && nombre.trim() !== ''){
+                crearCookie('nombre', nombre.trim(), 30);
+                document.write('El nombre es: ' + nombre);
+                break;
             }
-        } while (nombre != null);
+        }while(true);
 
-        //edad
-        do {
-            let agregarEdad = document.createElement('li');
-            edad = prompt('Introduce tu edad:');
-            console.log(edad);
-            if (edad != null) {
-                agregarEdad.innerHTML = edad;
-                document.getElementById('lista').appendChild(agregarEdad);
+        do{
+            let edadString = prompt('Introduce tu edad:');
+            if(edadString !== null && !isNaN(edadString) && parseInt(edadString) >= 0){
+                edad = parseInt(edadString);
                 crearCookie('edad', edad, 30);
-            }
-        } while (edad != null);
+                document.write('\nEl nombre es: ' + edad);
+                break;
+        }
+    }while(true);
+}
 
-    }
-
-    ejercicioCookie();
+ejercicioCookie();
 
 </script>
 

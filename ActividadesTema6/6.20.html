@@ -27,16 +27,16 @@
     usuario pulse el botón cancelar
     */
 
-    let ingrediente = "";
-    do {
-        let agregarIngrediente = document.createElement('li');
-        ingrediente = prompt('Introduce un ingrediente');
-        console.log(ingrediente);
-        agregarIngrediente.innerHTML = ingrediente;
-        if (ingrediente != null) {
-            document.getElementById('lista').appendChild(agregarIngrediente);
-        }
-    } while (ingrediente != null);
+   let ingrediente = '';
+   do{
+    let agregarIngrediente = document.createElement('li');
+    ingrediente = prompt('Introduce un ingrediente');
+    console.log(ingrediente);
+    agregarIngrediente.innerHTML = ingrediente;
+    if(ingrediente != null){
+        document.getElementsById('lista').appendChild(agregarIngrediente);
+    }
+   }while (ingrediente != null);
 
 
 

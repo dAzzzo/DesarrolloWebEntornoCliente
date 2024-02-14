@@ -23,26 +23,22 @@
     */
 
    function borrarCookie(name){
-    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
    }
 
    function comprobacionYborrado(){
-    // Tenemos que comprobar si existe la cookie 'nombre'
     if(document.cookie.includes('nombre')){
-        // Busca que exista y si existe se elimina
         borrarCookie('nombre');
-        console.log('Cookie "nombre" eliminada.');
+        console.log('Cookie "nombre" eliminada');
     }
 
-    // Ahora hacemos lo mismo pero con la cookie 'edad'
     if(document.cookie.includes('edad')){
         borrarCookie('edad');
-        console.log('Cookie "edad" eliminada.');
+        console.log('Cookie "edad" eliminada');
     }
    }
 
-   // Los 10 segundos se especifican en milisegundos (10000)
-   setInterval(comprobacionYborrado, 10000);
+   setInterval(comprobacionYborrado, 1000);
 
 </script>
 

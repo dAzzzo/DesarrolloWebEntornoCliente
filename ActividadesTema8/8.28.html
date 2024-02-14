@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8.28</title>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="600"></canvas>
+    <script>
+        /*
+        Usa la API Canvas para dibujar en tu pagina web, sobre 
+        un lienzo de 600x600 px, el logotipo de Mitsubishi
+        */
+        window.onload = function() {
+    // Obtener el contexto del canvas
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+
+    // Establecer el color de fondo
+    ctx.fillStyle = '#ffffff'; // blanco
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Dibujar el logotipo de Mitsubishi
+    ctx.beginPath();
+    ctx.moveTo(300, 100);
+    ctx.lineTo(200, 300);
+    ctx.lineTo(300, 500);
+    ctx.lineTo(400, 300);
+    ctx.closePath();
+    ctx.fillStyle = '#ffffff'; // transparente
+    ctx.fill();
+    ctx.strokeStyle = '#ff0000'; // rojo
+    ctx.lineWidth = 10; // grosor de línea
+    ctx.stroke();
+
+    // Dibujar los rombos en los lados
+    drawRhombo(ctx, 200, 100, 100); // Rombo izquierdo
+    drawRhombo(ctx, 400, 100, 100); // Rombo derecho
+};
+
+// Función para dibujar un rombo
+function drawRhombo(ctx, x, y, size) {
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x - size / 2, y + size / 2);
+    ctx.lineTo(x, y + size);
+    ctx.lineTo(x + size / 2, y + size / 2);
+    ctx.closePath();
+    ctx.stroke();
+}
+
+
+
+    </script>
+</body>
+</html>

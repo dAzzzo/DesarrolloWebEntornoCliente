@@ -23,53 +23,46 @@
     */
 
     function generarTabla(filas, columnas) {
-            let tabla = [];
+        let tabla = [];
 
-            // Generar la tabla con números aleatorios
-            for (let i = 0; i < filas; i++) {
-                let fila = [];
-                for (let j = 0; j < columnas; j++) {
-                    fila.push(Math.floor(Math.random() * 100)); // Números aleatorios entre 0 y 99
-                }
-                tabla.push(fila);
+        for (let i = 0; i < filas; i++) {
+            let fila = [];
+            for(let j=0;j<columnas;j++){
+                fila.push(Math.floor(Math.random()  * 100));
             }
-
-            return tabla;
+            tabla.push(fila);
         }
+        return tabla;
+    }
 
-        function mostrarTabla(tabla) {
-            console.log("Tabla generada:");
-            for (let i = 0; i < tabla.length; i++) {
-                console.log(tabla[i].join('\t'));
-            }
+    function mostrarTabla(tabla){
+        console.log('Tabla generada:');
+        for(let i = 0; i<tabla.length;i++){
+            console.log(tabla[i].join('\t'));
         }
+    }
 
-        function contarFilasColumnas(tabla) {
-            console.log("\nRecorriendo la tabla para contar filas y columnas:");
+    function contarFilasColumnas(tabla){
+        console.log("\nRecorriendo la tabla para contar filas y columnas:");
 
-            // Contar filas
-            console.log("Número de filas: " + tabla.length);
+        console.log('Numero de filas: ' + tabla.length);
 
-            // Contar columnas (asumiendo que todas las filas tienen la misma cantidad de columnas)
-            if (tabla.length > 0) {
-                console.log("Número de columnas: " + tabla[0].length);
-            } else {
-                console.log("La tabla está vacía.");
-            }
+        if(tabla.length > 0){
+            console.log('Numero de columnas: ' +  tabla[0].length);
+        }else{
+            console.log('La tabla está vacia');
         }
+    }
 
-        // Solicitar al usuario el número de filas y columnas
-        const filas = parseInt(prompt('Ingrese el número de filas:'));
-        const columnas = parseInt(prompt('Ingrese el número de columnas:'));
+    let filas = parseInt(prompt('Ingrese el numero de filas:'));
+    let columnas = parseInt(prompt('Ingrese el numero de columnas:'));
 
-        // Generar la tabla y mostrarla
-        const tablaGenerada = generarTabla(filas, columnas);
-        mostrarTabla(tablaGenerada);
+    let tablaGenerada = generarTabla(filas, columnas);
+    mostrarTabla(tablaGenerada);
 
-        // Contar filas y columnas
-        contarFilasColumnas(tablaGenerada);
+    contarFilasColumnas(tablaGenerada);
 
-   
+
 
 </script>
 

@@ -39,32 +39,32 @@
     Cancelar la lista debe desordenarse aleatoriamente
     */
     function ordenarLista() {
-            let lista = document.getElementById('miLista');
-            let items = Array.from(lista.getElementsByTagName('li'));
+        let lista = document.getElementById('miLista');
+        let items = Array.from(lista.getElementsByTagName('li'));
 
-            items.sort(function (a, b) {
-                return a.textContent.localeCompare(b.textContent);
-            });
 
-            for (let i = 0; i < items.length; i++) {
-                lista.appendChild(items[i]);
-            }
+        items.sort(function (a, b) {
+            return a.textContent.localeCompare(b.textContent);
+        });
+
+        for (let i = 0; i < items.length; i++) {
+            lista.appendChild(items[i]);
+        }
+    }
+
+    function desordenarLista() {
+        let lista = document.getElementById('miLista');
+        let items = Array.from(lista.getElementsByTagName('li'));
+
+        for (let i = items.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [items[i], items[j]] = [items[j], items[i]];
         }
 
-        function desordenarLista() {
-            let lista = document.getElementById('miLista');
-            let items = Array.from(lista.getElementsByTagName('li'));
-
-            for (let i = items.length - 1; i > 0; i--) {
-                let j = Math.floor(Math.random() * (i + 1));
-                [items[i], items[j]] = [items[j], items[i]];
-            }
-
-            for (let i = 0; i < items.length; i++) {
-                lista.appendChild(items[i]);
-            }
+        for (let i = 0; i < items.length; i++) {
+            lista.appendChild(items[i]);
         }
-   
+    }
 
 </script>
 

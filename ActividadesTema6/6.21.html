@@ -31,18 +31,17 @@
     <div data-width="" data-height="" data-bordercolor="">caja</div>
     */
 
-    function cambioEstilo() {
+    function cambioEstilo(){
         let nuevoEstilo = document.getElementById('estilo');
 
-        let nuevoEstiloWidth = prompt('Escriba el width en px:');
+        let nuevoEstiloWidth = prompt('Escriba el width en px: ');
         nuevoEstilo.style.width = nuevoEstiloWidth + 'px';
 
-        let nuevoEstiloHeight = prompt('Escriba el height en px:');
+        let nuevoEstiloHeight = prompt('Escriba el height en px: ');
         nuevoEstilo.style.height = nuevoEstiloHeight + 'px';
 
-        let nuevoEstiloBorderColor = prompt('Escriba el color del borde:');
+        let nuevoEstiloBorderColor = prompt('Escriba el color del borde: ');
         nuevoEstilo.style.borderColor = nuevoEstiloBorderColor;
-
     }
 
     cambioEstilo();
