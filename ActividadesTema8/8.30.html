@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8.30</title>
+</head>
+<body>
+    <h1>¡Visita este enlace!</h1>
+    <script>
+        /*
+        Escribe una aplicacion que, por medio de la API Notificacion,
+        notifique al usuario cada 30 segundos que debe visitar el enlace
+        proporcionado por la propia notificacion. Cada vez que aparezca
+        una notificacion, debe cerrarse automaticamente pasados cinco 
+        segundos. Una vez que se visite el enlace, deben cesar las 
+        notificaciones
+        */
+       // Función para mostrar la notificación
+       function showNotification() {
+            if (!("Notification" in window)) {
+                alert("Este navegador no soporta notificaciones.");
+            } else if (Notification.permission === "granted") {
+                var notification = new Notification("¡Visita este enlace!", {
+                    body: "Haz clic aquí para acceder.",
+                    icon: "https://example.com/notification-icon.png"
+                });
+
+                // Cerrar la notificación automáticamente después de 5 segundos
+                setTimeout(notification.close.bind(notification), 5000);
+
+                // Al hacer clic en la notificación, abrir el enlace
+                notification.onclick = function() {
+                    window.open("https://example.com/link");
+                    // Cancelar las notificaciones
+                    clearInterval(notificationInterval);
+                    // Cerrar la notificación actual
+                    notification.close();
+                };
+            }
+        }
+
+        // Solicitar permiso para enviar notificaciones
+        if (Notification.permission !== "granted") {
+            Notification.requestPermission().then(function(permission) {
+                if (permission === "granted") {
+                    // Mostrar la primera notificación
+                    showNotification();
+                    // Configurar notificaciones periódicas cada 30 segundos
+                    var notificationInterval = setInterval(showNotification, 30000);
+                }
+            });
+        } else {
+            // Mostrar la primera notificación
+            showNotification();
+            // Configurar notificaciones periódicas cada 30 segundos
+            var notificationInterval = setInterval(showNotification, 30000);
+        }
+    </script>
+</body>
+</html>
