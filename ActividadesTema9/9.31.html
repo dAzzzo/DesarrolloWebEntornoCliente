@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>9.31</title>
 </head>
+
 <body>
     <h1>Encadenamiento de acciones con promesas</h1>
     <script>
@@ -12,8 +14,8 @@
         Elabora un pequeño programa que use una promesa y que 
         encadene tres acciones tras el cumplimiento de la misma
         */
-       // Función que devuelve una promesa que se resuelve después de 1 segundo
-       function esperarUnSegundo() {
+        //Funcion q se devuleve despues de un seg
+        function esperarUnSegundo() {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
                     console.log("La promesa se ha cumplido después de 1 segundo");
@@ -22,7 +24,7 @@
             });
         }
 
-        // Encadenar tres acciones después del cumplimiento de la promesa
+        //Se encadena 3 acciones 
         esperarUnSegundo()
             .then(() => {
                 console.log("Primera acción después del cumplimiento de la promesa");
@@ -40,4 +42,5 @@
             });
     </script>
 </body>
+
 </html>

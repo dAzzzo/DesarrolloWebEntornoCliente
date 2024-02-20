@@ -15,15 +15,14 @@
         y cuando el DOM este completamente cargado mostrar el mensaje
         <<LISTO PARA ACTUAR>>
         */
-        // Función que devuelve una promesa que se resuelve cuando el DOM está completamente cargado
+        //Funcion que devuelve una promsea del DOM
         function esperarDOMCargado() {
             return new Promise((resolve, reject) => {
-                // Verificar si el DOM ya está cargado
+                //Comprobacion de que el DOM funciona
+                //Despues comprueba de que funciona y lo ejecuta o no
                 if (document.readyState === 'complete' || (document.readyState !== 'loading' && !document.documentElement.doScroll)) {
-                    // Si el DOM ya está cargado, resolver la promesa de inmediato
                     resolve();
                 } else {
-                    // Si el DOM aún no está completamente cargado, esperar hasta que esté cargado
                     document.addEventListener('DOMContentLoaded', () => {
                         resolve();
                     });
@@ -31,20 +30,18 @@
             });
         }
 
-        // Función para mostrar el mensaje de carga
+        //Mensaje de carga
         function mostrarMensajeCargando() {
             console.log("CARGANDO...");
         }
 
-        // Función para mostrar el mensaje de listo
+        //mensaje de listo
         function mostrarMensajeListo() {
             console.log("LISTO PARA ACTUAR");
         }
 
-        // Mostrar el mensaje de carga mientras se espera a que el DOM esté completamente cargado
         mostrarMensajeCargando();
 
-        // Esperar a que el DOM esté completamente cargado y luego mostrar el mensaje de listo
         esperarDOMCargado().then(() => {
             mostrarMensajeListo();
         });

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8.26</title>
+</head>
+
+<body>
+    <script type="module">
+        /*
+        Escribe un modulo que facilite trabajar con la API de geolocalizacion
+        incluyendo funciones como askPermissions(), getLongitude(), getLatitude() 
+        o getAltitude(). Luego importa el modelu a tu programa usando el espacio
+        el espacio de nombres geo e invoca todas las funciones incluidas en el modulo
+        para ejemplificar su uso
+        */
+
+        import geo from './geo.js';
+
+        geo.askPermissions()
+            .then(permissionState => {
+                console.log('Permission state:', permissionState);
+                return Promise.all([geo.getLongitude(), geo.getLatitude(), geo.getAltitude()]);
+            })
+            .then(values => {
+                let [longitude, latitude, altitude] = values;
+                console.log('Longitude:', longitude);
+                console.log('Latitude:', latitude);
+                console.log('Altitude:', altitude);
+            })
+            .catch(error => {
+                console.error('Error:', error.message);
+            });
+
+
+    </script>
+</body>
+
+</html>

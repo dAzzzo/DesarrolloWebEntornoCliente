@@ -8,17 +8,13 @@
 </head>
 
 <body>
-    <script>
-        /*
-        Elabora un programa en JS que haga uso de algun
-        modolu externo de tu interes. El mismo programa 
-        debe importar componentes concretos de otro módulo
-        que hayas desarrollado previamente
-        */
+
+    <script type="module">
 
         import { suma } from './index.js';
 
-        console.log(suma(5, 3));
+        document.body.innerHTML += '<h1>' + suma(1, 2) + '</h1>'
+
     </script>
 </body>
 

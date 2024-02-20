@@ -28,19 +28,19 @@
         switch (ejemplos) {
             case EvalError:
                 try {
-                    throw new EvalError("Hello", "someFile.js", 10);
+                    throw new EvalError("Hello", "index.js", 10);
                 } catch (e) {
-                    console.log(e instanceof EvalError); // true
+                    console.log(e instanceof EvalError);
                     console.log(e.message);
                 }
 
             case InternalError:
                 function loop(x) {
                     if (x >= 10)
-                        // "x >= 10" es la condición de salida
+                        //"x >= 10" es la condición de salida
                         return;
-                    // hacer cosas
-                    loop(x + 1); // la llamada recursiva
+                    //Esta es la llamada recursiva
+                    loop(x + 1);
                 }
                 loop(0);
 
@@ -52,44 +52,46 @@
                     }
                 }
 
+                //Aqui se maneja el error
                 try {
                     check(2000);
                 } catch (error) {
                     if (error instanceof RangeError) {
-                        // Manejar el error
                     }
                 }
 
             case ReferenceError:
                 try {
+                    //"undefinedVariable no está definida"
                     let a = undefinedVariable;
                 } catch (e) {
-                    console.log(e instanceof ReferenceError); // true
-                    console.log(e.message); // "undefinedVariable no está definida"
+                    console.log(e instanceof ReferenceError);
+                    console.log(e.message);
                 }
 
             case SyntaxError:
                 try {
-                    throw new SyntaxError("Hello", "someFile.js", 10);
+                    throw new SyntaxError("Hello", "index.js", 10);
                 } catch (e) {
-                    console.error(e instanceof SyntaxError); // true
-                    console.error(e.message); // Hello
+                    console.error(e instanceof SyntaxError);
+                    //Debe sacar 'Hello'
+                    console.error(e.message);
                 }
 
             case TypeError:
                 try {
-                    throw new TypeError("Hello", "someFile.js", 10);
+                    throw new TypeError("Hello", "index.js", 10);
                 } catch (e) {
-                    console.log(e instanceof TypeError); // Respuesta: true
-                    console.log(e.message); // Respuesta: "Hello"
+                    console.log(e instanceof TypeError); 
+                    console.log(e.message);
                 }
 
             case URIError:
                 try {
-                    throw new URIError("Hello", "someFile.js", 10);
+                    throw new URIError("Hello", "index.js", 10);
                 } catch (e) {
-                    console.log(e instanceof URIError); // true
-                    console.log(e.message); // "Hello"
+                    console.log(e instanceof URIError);
+                    console.log(e.message); 
                 }
 
 

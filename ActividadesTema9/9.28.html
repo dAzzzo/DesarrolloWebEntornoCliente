@@ -13,40 +13,40 @@
         Escribe un programa que resuelva alguna tarea de tu interes
         y en cuya solucion hayas utilizado un callback hell
         */
-        // Simulación de una función asíncrona para cargar datos de usuario desde una API
+        //simulacion de una funcion asincrona para cambiar los datos de una API
         function cargarDatosUsuario(idUsuario, callback) {
             setTimeout(() => {
                 console.log("Cargando datos de usuario...");
-                const usuario = {
+                let usuario = {
                     id: idUsuario,
                     nombre: "Ejemplo",
                     apellido: "Usuario",
                     correo: "ejemplo@usuario.com"
                 };
                 callback(usuario);
-            }, 2000); // Simulación de tiempo de carga de 2 segundos
+                //Se simulan cada dos segundos
+            }, 2000);
         }
 
-        // Simulación de una función asíncrona para cargar los detalles del usuario desde una API
         function cargarDetallesUsuario(idUsuario, callback) {
             setTimeout(() => {
                 console.log("Cargando detalles del usuario...");
-                const detalles = {
+                let detalles = {
                     id: idUsuario,
                     edad: 30,
                     ciudad: "Ejemplolandia"
                 };
                 callback(detalles);
-            }, 2000); // Simulación de tiempo de carga de 2 segundos
+            }, 2000);
         }
 
-        // Función principal para cargar y mostrar los datos del usuario en una página web
+        //Funcion principal para cargar los datos de la pagina
         function cargarYMostrarDatosUsuario(idUsuario) {
             cargarDatosUsuario(idUsuario, function (usuario) {
                 console.log("Datos de usuario cargados:", usuario);
                 cargarDetallesUsuario(usuario.id, function (detalles) {
                     console.log("Detalles del usuario cargados:", detalles);
-                    // Mostrar los datos del usuario en la página web
+                    //Se muestran los datos con console log
                     console.log("Mostrando datos del usuario en la página web:");
                     console.log("Nombre:", usuario.nombre);
                     console.log("Apellido:", usuario.apellido);
@@ -57,7 +57,6 @@
             });
         }
 
-        // Llamada a la función principal
         cargarYMostrarDatosUsuario(123);
 
     </script>
