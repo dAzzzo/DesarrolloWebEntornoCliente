@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9.35</title>
+
+</head>
+
+<body>
+    <div id="products-grid"></div>
+    <script>
+        /*
+        La Coffee API devuelve una imagen aleatoria relacionada con el 
+        mundo del cafe cada vez que realizamos una peticion a la URL 
+        https://coffee.alexflipnote.dev/random. Crea una aplicacion que 
+        muestre en una pagina HTML una cuadricula con nueve productos
+        (tres datos de prueba) donde cada producto muestre nombre, 
+        descripcion y precio; todos datos de prueba. Tras la carga del 
+        DOM debes realizar peticiones a esta API para ir colocando una 
+        imagen a cada producto
+        */
+        let express = require('express');
+        let fetch = require('node-fetch');
+
+        let app = express();
+        let PORT = 3000;
+
+        app.use(express.static('public'));
+
+        app.get('/coffee', async (req, res) => {
+            try {
+                let products = await getCoffeeProducts();
+                res.json(products);
+            } catch (error) {
+                console.error('Error al obtener productos de café:', error);
+                res.status(500).json({ error: 'Error interno del servidor' });
+            }
+        });
+
+        async function getCoffeeProducts() {
+            let products = [];
+            for (let i = 0; i < 9; i++) {
+                let response = await fetch('https://coffee.alexflipnote.dev/random');
+                let data = await response.json();
+                products.push({
+                    name: `Product ${i + 1}`,
+                    description: 'Descripción de prueba',
+                    price: (Math.random() * 10 + 10).toFixed(2), // Precio aleatorio entre 10 y 20
+                    image: data.file,
+                });
+            }
+            return products;
+        }
+
+        app.listen(PORT, () => {
+            console.log(`Servidor escuchando en http://localhost:${PORT}`);
+        });
+
+    </script>
+</body>
+
+</html>

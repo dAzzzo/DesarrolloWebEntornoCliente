@@ -1,0 +1,32 @@
+{
+    "nombre": "Juan Pérez",
+    "ocupacion": "Desarrollador de Software",
+    "resumen": "Apasionado por la tecnología y el desarrollo de software. Con experiencia en desarrollo web y móvil utilizando tecnologías como HTML, CSS, JavaScript y React Native.",
+    "educacion": [
+      {
+        "titulo": "Ingeniería en Sistemas",
+        "institucion": "Universidad X",
+        "fecha": "2015 - 2019"
+      },
+      {
+        "titulo": "Curso Avanzado de Desarrollo Web",
+        "institucion": "Plataforma de cursos en línea",
+        "fecha": "2020"
+      }
+    ],
+    "experiencia": [
+      {
+        "puesto": "Desarrollador Web",
+        "empresa": "Empresa A",
+        "fecha": "2019 - 2021",
+        "descripcion": "Desarrollo y mantenimiento de aplicaciones web utilizando HTML, CSS, JavaScript y React."
+      },
+      {
+        "puesto": "Desarrollador Móvil",
+        "empresa": "Empresa B",
+        "fecha": "2021 - Presente",
+        "descripcion": "Desarrollo de aplicaciones móviles multiplataforma utilizando React Native."
+      }
+    ]
+  }
+  

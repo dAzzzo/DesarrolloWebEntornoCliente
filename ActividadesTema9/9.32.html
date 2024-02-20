@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9.32</title>
+</head>
+<body>
+    <div id="persona" class="column"></div>
+    <div id="planeta" class="column"></div>
+    <div id="nave" class="column"></div>
+    <script>
+/*
+En el sitio https://swapi.dev/ puedes encontrar la documentacion de la 
+API de Star Wars. Escribe un programa que realice tres peticiones 
+(la persona 1, el planeta 1 y la nave 1) y que muestre en un documento
+HTML de tres columnas la informacion devuelta por la API formateada
+con las etiquetas HML que consideres.
+*/
+
+// Función para realizar una solicitud a la API y mostrar los datos en una columna
+function fetchDataAndDisplay(url, columnName) {
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        const column = document.getElementById(columnName);
+        column.innerHTML = `<h2>${columnName}</h2>`;
+        for (const [key, value] of Object.entries(data)) {
+            column.innerHTML += `<p><strong>${key}:</strong> ${value}</p>`;
+        }
+    })
+    .catch(error => console.error('Error fetching data:', error));
+}
+
+// Llamar a la función para obtener los datos de la persona, el planeta y la nave
+fetchDataAndDisplay("https://swapi.dev/api/people/1/", "persona");
+fetchDataAndDisplay("https://swapi.dev/api/planets/1/", "planeta");
+fetchDataAndDisplay("https://swapi.dev/api/starships/9/", "nave"); // Corregido el ID de la nave
+
+
+    </script>
+</body>
+</html>

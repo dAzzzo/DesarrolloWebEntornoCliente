@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8.33</title>
+</head>
+<body>
+    <div id="curriculum"></div>
+    <script>
+        /*
+        Escribe un documento .json en el que almacenes toda la informacion
+        de tu curriculo. Luego, por medio de la API Fetch, realiza una 
+        peticion para acceder a ese documeto local, leelo y muestralo en
+        el navegador formateado en forma de pagina HTML
+        */
+       // Función para cargar y mostrar el currículum desde el archivo JSON
+function mostrarCurriculum() {
+    fetch('curriculum.json')
+    .then(response => response.json())
+    .then(data => {
+        const curriculumDiv = document.getElementById('curriculum');
+        curriculumDiv.innerHTML = `
+            <h1>${data.nombre}</h1>
+            <h2>${data.ocupacion}</h2>
+            <p><strong>Resumen:</strong> ${data.resumen}</p>
+            <h3>Educación</h3>
+            <ul>
+                ${data.educacion.map(educacion => `<li>${educacion.titulo} - ${educacion.institucion} (${educacion.fecha})</li>`).join('')}
+            </ul>
+            <h3>Experiencia</h3>
+            <ul>
+                ${data.experiencia.map(experiencia => `<li>${experiencia.puesto} en ${experiencia.empresa} (${experiencia.fecha}): ${experiencia.descripcion}</li>`).join('')}
+            </ul>
+        `;
+    })
+    .catch(error => console.error('Error fetching curriculum:', error));
+}
+
+// Llamar a la función para mostrar el currículum cuando la página se cargue
+window.onload = mostrarCurriculum;
+
+    </script>
+</body>
+</html>
