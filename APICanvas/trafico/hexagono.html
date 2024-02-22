@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Octógono en Canvas</title>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        var x = canvas.width / 2; // Coordenada x del centro del octógono
+        var y = canvas.height / 2; // Coordenada y del centro del octógono
+        var radio = 100; // Radio del octógono
+        var sides = 8; // Número de lados del octógono
+
+        // Dibujar el octógono
+        ctx.beginPath();
+        ctx.moveTo(x + radio * Math.cos(0), y + radio * Math.sin(0)); // Mover al primer punto
+        for (var i = 1; i <= sides; i++) {
+            ctx.lineTo(x + radio * Math.cos(i * 2 * Math.PI / sides), y + radio * Math.sin(i * 2 * Math.PI / sides));
+        }
+        ctx.closePath(); // Cerrar el trazado
+        ctx.stroke(); // Dibujar el contorno del octógono
+    </script>
+</body>
+</html>
