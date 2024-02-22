@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>8.33</title>
 </head>
+
 <body>
     <div id="curriculum"></div>
     <script>
@@ -14,13 +16,13 @@
         peticion para acceder a ese documeto local, leelo y muestralo en
         el navegador formateado en forma de pagina HTML
         */
-       // Función para cargar y mostrar el currículum desde el archivo JSON
-function mostrarCurriculum() {
-    fetch('curriculum.json')
-    .then(response => response.json())
-    .then(data => {
-        const curriculumDiv = document.getElementById('curriculum');
-        curriculumDiv.innerHTML = `
+        //Función para cargar y mostrar el currículum desde el archivo JSON
+        function mostrarCurriculum() {
+            fetch('curriculum.json')
+                .then(response => response.json())
+                .then(data => {
+                    const curriculumDiv = document.getElementById('curriculum');
+                    curriculumDiv.innerHTML = `
             <h1>${data.nombre}</h1>
             <h2>${data.ocupacion}</h2>
             <p><strong>Resumen:</strong> ${data.resumen}</p>
@@ -31,15 +33,15 @@ function mostrarCurriculum() {
             <h3>Experiencia</h3>
             <ul>
                 ${data.experiencia.map(experiencia => `<li>${experiencia.puesto} en ${experiencia.empresa} (${experiencia.fecha}): ${experiencia.descripcion}</li>`).join('')}
-            </ul>
-        `;
-    })
-    .catch(error => console.error('Error fetching curriculum:', error));
-}
+            </ul>`;
+                })
+                .catch(error => console.error('Error fetching curriculum:', error));
+        }
 
-// Llamar a la función para mostrar el currículum cuando la página se cargue
-window.onload = mostrarCurriculum;
+        //Llamar a la función para mostrar el currículum cuando la página se cargue
+        window.onload = mostrarCurriculum;
 
     </script>
 </body>
+
 </html>

@@ -60,35 +60,34 @@
         y mostrar de forma asincrona (sin recargar la pagina) los tres primeros
         resultados devueltos por la API
         */
-        const form = document.getElementById('search-form');
-        const searchInput = document.getElementById('search-input');
-        const resultsContainer = document.getElementById('results-container');
+        let form = document.getElementById('search-form');
+        let searchInput = document.getElementById('search-input');
+        let resultsContainer = document.getElementById('results-container');
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
-            const query = searchInput.value.trim();
+            let query = searchInput.value.trim();
             if (query !== '') {
                 searchProducts(query);
             }
         });
 
         async function searchProducts(query) {
-            const response = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${query}`);
-            const data = await response.json();
+            let response = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${query}`);
+            let data = await response.json();
             displayResults(data.results.slice(0, 3));
         }
 
         function displayResults(results) {
             resultsContainer.innerHTML = '';
             results.forEach(result => {
-                const item = document.createElement('div');
+                let item = document.createElement('div');
                 item.classList.add('item');
                 item.innerHTML = `
             <h3>${result.title}</h3>
             <p>Precio: ${result.price}</p>
             <p>Vendedor: ${result.seller.nickname}</p>
-            <p><a href="${result.permalink}" target="_blank">Ver en Mercado Libre</a></p>
-        `;
+            <p><a href="${result.permalink}" target="_blank">Ver en Mercado Libre</a></p>`;
                 resultsContainer.appendChild(item);
             });
         }
