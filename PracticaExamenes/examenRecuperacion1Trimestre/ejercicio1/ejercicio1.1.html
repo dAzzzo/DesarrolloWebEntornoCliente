@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio para encontrar las parejas - ejercicio 1.1</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 20px;
+        }
+
+        td {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        document.write('Existe la posibilidad de que no ganes, debido a la aelatoriedad, más grande el juego, menos probable ganar, pero mayor la sensación de riesgo...');
+
+        function validarNumero() {
+            let numero;
+            //Con el doWhile hago la comprobacion de que el n sea mayor que dos y si es 0 se cierra
+            do {
+                numero = prompt("Introduce un número > 2 (0 = salir):");
+                numero = parseInt(numero);
+            } while (isNaN(numero) || numero < 0 || (numero !== 0 && numero <= 2));
+            return numero;
+        }
+
+
+        //Esto es el programa que valida el num para que no sea 0 y si lo es cierra el programa
+        let n = validarNumero();
+
+        if (n === 0) {
+            document.write("Has introducido un 0, el programa se ha cerrado.");
+        } else {
+            let matriz = crearMatriz(n);
+            imprimirMatriz(matriz);
+            encontrarPareja(matriz);
+        }
+
+        function crearMatriz(n) {
+            //Creo las matrices, la principal y la que guarda los resultados
+            let matriz = [];
+            let numerosUsados = [];
+
+            for (let i = 0; i < n; i++) {
+                let fila = [];
+                for (let j = 0; j < n; j++) {
+                    let num;
+                    do {
+                        //genero numeros aleatorios con math.random, el floor es para obligar a que sean enterors
+                        num = Math.floor(Math.random() * ((n * n) / 2)) + 1;
+                    } while (numerosUsados[num] && numerosUsados[num].length >= 2);
+
+                    //Los numeros son añadidos al array
+                    fila.push(num);
+                    if (!numerosUsados[num]) {
+                        numerosUsados[num] = [];
+                    }
+                    numerosUsados[num].push({ fila: i, columna: j });
+                }
+                matriz.push(fila);
+            }
+            return matriz;
+        }
+
+        //Para implementarlo en un tabla html tengo que usar create element e introducir el parametro adecuado
+        //he creado un css simple para la tabla  en un style
+        function imprimirMatriz(matriz) {
+            let table = document.createElement("table");
+            for (let i = 0; i < matriz.length; i++) {
+                let fila = document.createElement("tr");
+                for (let j = 0; j < matriz[i].length; j++) {
+                    let celda = document.createElement("td");
+                    celda.textContent = matriz[i][j];
+                    fila.appendChild(celda);
+                }
+                table.appendChild(fila);
+            }
+            document.body.appendChild(table);
+        }
+
+        //Encontrar parejas intenta buscar las parejas que existan, pero no asegura que las encuentre ya que es aleatorio y existe la posibilidad de que no este
+        function encontrarPareja(matriz) {
+            for (let intentos = 1; intentos <= 5; intentos++) {
+                let fila1 = prompt("Introduce la FILA de la 1º caja:");
+                let columna1 = prompt("Introduce la COLUMNA de la 1º caja:");
+                let fila2 = prompt("Introduce la FILA de la 2º caja:");
+                let columna2 = prompt("Introduce la COLUMNA de la 2º caja:");
+
+                if (matriz[fila1][columna1] === matriz[fila2][columna2]) {
+                    document.write("¡Lo has logrado! :)");
+                    return;
+                } else {
+                    document.write("Otra vez será. :(");
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

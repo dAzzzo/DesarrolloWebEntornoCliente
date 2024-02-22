@@ -21,43 +21,18 @@
         DOM debes realizar peticiones a esta API para ir colocando una 
         imagen a cada producto
         */
-        let express = require('express');
-        let fetch = require('node-fetch');
+       let div = document.getElementById('products-grid');
 
-        let app = express();
-        let PORT = 3000;
+        fetch('https://api.allorigins.win/get?url=https://coffee.alexflipnote.dev/random')
+            .then((respuesta)=>respuesta.json())
+            .then((texto)=>{
+                div.innerHTML = "<img src='" + texto.contents + "' style='width: 100px; height: 100px'>";
+                console.log(texto.contents);
+            })
+            .catch((error)=>{
+                console.log(error);
+            });
 
-        app.use(express.static('public'));
-
-        app.get('/coffee', async (req, res) => {
-            try {
-                let products = await getCoffeeProducts();
-                res.json(products);
-            } catch (error) {
-                console.error('Error al obtener productos de café:', error);
-                res.status(500).json({ error: 'Error interno del servidor' });
-            }
-        });
-
-        async function getCoffeeProducts() {
-            let products = [];
-            for (let i = 0; i < 9; i++) {
-                let response = await fetch('https://coffee.alexflipnote.dev/random');
-                let data = await response.json();
-                products.push({
-                    name: `Product ${i + 1}`,
-                    description: 'Descripción de prueba',
-                    //Precio aleatorio entre 10 y 20
-                    price: (Math.random() * 10 + 10).toFixed(2),
-                    image: data.file,
-                });
-            }
-            return products;
-        }
-
-        app.listen(PORT, () => {
-            console.log(`Servidor escuchando en http://localhost:${PORT}`);
-        });
 
     </script>
 </body>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Señal de CEDA EL PASO</title>
+  <style>
+   
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="500" height="500"></canvas>
+
+  <script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Dibujar la señal de "CEDA EL PASO"
+      ctx.beginPath();
+      ctx.moveTo(50, 175);
+      ctx.lineTo(150, 175);
+      ctx.lineTo(100, 250);
+      ctx.closePath();
+      ctx.lineWidth = 15;
+      ctx.strokeStyle = 'red';
+      ctx.stroke();
+      ctx.fillStyle = 'white';
+      ctx.fill();
+    }
+
+    draw();
+  </script>
+</body>
+</html>

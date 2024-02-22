@@ -19,7 +19,7 @@
         en pantalla en formato HTML. Al cerrar el navegador toda la
         informacion almacenada debe ser retirada de la memoria
         */
-        var vehicleInfo = {
+        let vehicleInfo = {
             "marca": "Toyota",
             "modelo": "Corolla",
             "numero_bastidor": "123456789",
@@ -35,13 +35,13 @@
             }
         };
 
-        // Almacenar datos en localStorage
+        //Almacenar datos en localStorage
         localStorage.setItem('vehicleInfo', JSON.stringify(vehicleInfo));
 
-        // Leer datos del vehículo desde localStorage y mostrarlos en la página
-        var storedVehicleInfo = JSON.parse(localStorage.getItem('vehicleInfo'));
-        var vehicleDataContainer = document.getElementById('vehicleData');
-        var html = '<p><strong>Marca:</strong> ' + storedVehicleInfo.marca + '</p>';
+        //Leer datos del vehículo desde localStorage y mostrarlos en la página
+        let storedVehicleInfo = JSON.parse(localStorage.getItem('vehicleInfo'));
+        let vehicleDataContainer = document.getElementById('vehicleData');
+        let html = '<p><strong>Marca:</strong> ' + storedVehicleInfo.marca + '</p>';
         html += '<p><strong>Modelo:</strong> ' + storedVehicleInfo.modelo + '</p>';
         html += '<p><strong>Número de bastidor:</strong> ' + storedVehicleInfo.numero_bastidor + '</p>';
         html += '<p><strong>Cilindrada:</strong> ' + storedVehicleInfo.cilindrada + '</p>';
@@ -55,7 +55,7 @@
         html += '<p><strong>Correo:</strong> ' + storedVehicleInfo.propietario.correo + '</p>';
         vehicleDataContainer.innerHTML = html;
 
-        // Limpiar localStorage al cerrar la ventana del navegador
+        //Este window limpia con localStorage al cerrar la ventana del navegador
         window.addEventListener('beforeunload', function() {
             localStorage.removeItem('vehicleInfo');
         });

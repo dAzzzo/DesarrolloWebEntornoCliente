@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARKING</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        function draw() {
+            // Dibujar el cuadrado azul
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(368, 17, 120, 120);
+
+            // Dibujar el contorno del cuadrado
+            ctx.lineWidth = 1.5;
+            ctx.strokeStyle = 'black';
+            ctx.strokeRect(365, 15, 125, 125);
+
+            // Borrar el área donde se dibujará la flecha
+            ctx.clearRect(400, 40, 15, 75);
+
+            // Coordenadas del centro del semicírculo
+            var x = 420;
+            var y = 65;
+            var radio = 25;
+            var startAngle = 0; // 0 grados en radianes
+            var endAngle = Math.PI; // 180 grados en radianes
+
+            // Rotar el canvas
+            ctx.translate(x, y);
+            ctx.rotate(Math.PI + 1.55); // Rotar 180 grados
+
+            // Dibujar el arco del semicírculo
+            ctx.beginPath();
+            ctx.arc(0, 0, radio, startAngle, endAngle);
+            ctx.closePath(); // Cerrar el trazado para formar el semicírculo
+            ctx.fillStyle = 'white'; // Color de relleno blanco
+            ctx.fill(); // Rellenar el semicírculo
+
+        }
+
+
+        draw();
+    </script>
+</body>
+
+</html>

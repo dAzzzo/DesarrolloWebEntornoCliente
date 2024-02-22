@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Señal de CEDA EL PASO</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Dibujar la señal de "CIRCULACION PROHIBIDA"
+            ctx.beginPath();
+            ctx.arc(75, 75, 70, 0, Math.PI * 2, true); // Círculo externo
+            ctx.moveTo(110, 75); // Parece que esto no es obligatorio
+            ctx.fillStyle = 'red';
+            ctx.fill();
+            ctx.clearRect(35, 60, 80, 35);
+
+
+            // Dibujar la señal de "PROHIBIDO EL PASO"
+            ctx.beginPath(); // Nuevo cambio de dibujo
+            ctx.arc(250, 75, 50, 0, Math.PI * 2, true); // Círculo externo
+            ctx.lineWidth = 40; // Ancho del borde
+            ctx.strokeStyle = 'red'; // Color de la línea
+            ctx.stroke(); // Dibuja la línea de borde
+            ctx.fillStyle = 'white';
+            ctx.fill();
+
+        }
+
+        function drawMore() {
+            // Dibujar el cuadrado azul
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(368, 17, 120, 120);
+
+            // Dibujar el contorno del cuadrado
+            ctx.lineWidth = 1.5;
+            ctx.strokeStyle = 'black';
+            ctx.strokeRect(365, 15, 125, 125);
+
+
+            // Dibujar la flecha hacia arriba
+            ctx.beginPath();
+            ctx.moveTo(435,60); // Punto inicial de la base del triángulo
+            ctx.lineTo(460, 60); // Punto medio de la base del triángulo
+            ctx.lineTo(447.5, 35); // Punto superior del triángulo
+            ctx.closePath(); // Cerrar el trazado para formar un triángulo
+            ctx.fillStyle = 'white'; // Color de relleno blanco
+            ctx.fill(); // Rellenar el triángulo
+        
+        
+            // Borrar el área donde se dibujará la flecha
+            ctx.clearRect(440, 55, 15, 60);
+
+            // Dibujar la flecha hacia abajo
+            ctx.beginPath();
+            ctx.moveTo(395.5, 95); // Punto inicial de la base del triángulo
+            ctx.lineTo(419, 95); // Punto medio de la base del triángulo
+            ctx.lineTo(407, 115); // Punto superior del triángulo
+            ctx.closePath(); // Cerrar el trazado para formar un triángulo
+            ctx.fillStyle = 'red'; // Color de relleno blanco
+            ctx.fill(); // Rellenar el triángulo
+        
+        
+            // Borrar el área donde se dibujará la flecha
+            ctx.fillRect(400, 35, 15, 60);
+            ctx.fillStyle = 'red';
+        }
+
+
+        draw();
+        drawMore();
+    </script>
+</body>
+
+</html>
