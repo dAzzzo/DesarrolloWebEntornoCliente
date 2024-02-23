@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Crea un  programa en JS que simule la siguinete situaciónn de forma: Decides hornnear
+        una pizza en tu horno, y tu primer paso es precalentar el horno (esto requerira un dterminado
+        tiempo para una temperatura por cada 50ºC sera 3 min). Asi que estableces la temperatura deseada y empiezas a precalentar el horno.
+    
+        Mintras el horno se precalienta, eliges los ingredientes para la piza que los elegira el usuario por teclado. Una vez que tienes los ingredientes haces la pizza en 5 min (debes crear un objeto: 
+        nombre, ingredientes y tiempo de horneado para 150ºC) y finalmente la pones en un molde para pizza. Pero...¡Te queda tiempo!, asi que coges una bebida y ves algo de TV
+        mientras esperas a que el horno emita un pitido cuando este listo. Es hora de hacer la pizza y
+        esperar que se haga hasta apagar el horno.
+    
+        Muestra por consola los mensajes en orden que cada una de la funciones que se han ido realizado y pensando que tareas deben ser sincornas y asincronas.
+        */
+        //Funcion asincrona del horneado
+        function precalentarHorno(temperaturaDeseada) {
+            let tiempoPrecalentamiento = Math.ceil(temperaturaDeseada / 50) * 3;
+            //Creo una promsea que me funcione como comprobador de la temperatura
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    console.log(`He precalentado el horno a ${temperaturaDeseada}°C.`);
+                    resolve();
+                }, tiempoPrecalentamiento * 1000);
+            });
+        }
+
+        //Ahora tengo que preparar la funcion de forma sincrona
+        function prepararPizza(ingredientes) {
+            let tiempoPreparacion = 5;
+            console.log(`Se esta preparando la pizza con los siguiente ingrediente, ñam: ${ingredientes.join(', ')}.`);
+            console.log(`A la pizza le faltan ${tiempoPreparacion} minutos.`);
+            return tiempoPreparacion;
+        }
+
+        //Funcion asincrona delhorneado
+        function hornearPizza(temperatura) {
+            //la pizza se hace en 10 min
+            let tiempoHorneado = 10;
+            return new Promise(resolve => {
+                //Creo un setTimeout de para darle un tiemopo hasta que se ejecute
+                setTimeout(() => {
+                    console.log(`La pizza se ha horneado a ${temperatura}°C.`);
+                    resolve();
+                }, tiempoHorneado * 1000);
+            });
+        }
+
+        //funcion async donde se ejecuta la haccion principal de la pizza
+        async function hacerPizza() {
+            let temperaturaDeseada = 150;
+            console.log(`\nCOMENZANDO...`);
+            console.log(`Paso 1: Precalineta el horno a ${temperaturaDeseada}°C...`);
+            await precalentarHorno(temperaturaDeseada);
+
+            let ingredientes = ['tomamte', 'queso', 'aceitunas', 'bacon'];
+            console.log(`Paso 2: Los ingredientes son:`);
+            let tiempoPreparacion = prepararPizza(ingredientes);
+
+            console.log(`Paso 3: HORNEANDO...`);
+            await hornearPizza(temperaturaDeseada);
+
+            console.log(`Paso 4: Por fin se ha cocinado la pizza: ¡Qué hambre!`);
+            console.log(`Paso 5: Apagar el horno`);
+        }
+
+
+        hacerPizza();
+
+    </script>
+</body>
+
+</html>

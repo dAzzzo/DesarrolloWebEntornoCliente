@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Señal de Stop</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="200" height="200"></canvas>
+    <script>
+      // Obtener el canvas y su contexto
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+
+      // Dibujar el octágono rojo
+      ctx.beginPath();
+      ctx.moveTo(70, 20);
+      ctx.lineTo(130, 20);
+      ctx.lineTo(180, 70);
+      ctx.lineTo(180, 130);
+      ctx.lineTo(130, 180);
+      ctx.lineTo(70, 180);
+      ctx.lineTo(20, 130);
+      ctx.lineTo(20, 70);
+      ctx.closePath();
+      ctx.fillStyle = "red";
+      ctx.fill();
+
+      // Escribir "STOP" en blanco
+      ctx.font = "bold 50px Arial";
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+      ctx.fillText("STOP", 100, 120);
+    </script>
+  </body>
+</html>

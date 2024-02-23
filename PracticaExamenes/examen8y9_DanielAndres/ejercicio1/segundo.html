@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>segundo</title>
+</head>
+
+<body>
+    <script type="module">
+
+        import { edadUsuario } from './primero.js';
+        import { anioNacimiento } from './primero.js';
+
+
+        function mayor06(calculo) {
+            if (calculo > 2006) {
+                let respuesta = false;
+                console.log('\nvalido: ' + respuesta);
+                console.log('El usuario es menor de 18 años');
+            } else {
+                let respuesta = true;
+                console.log('\nvalido: ' + respuesta);
+                console.log('El usuario es mayor de 18 años');
+            }
+        };
+        mayor06();
+
+    </script>
+</body>
+
+</html>

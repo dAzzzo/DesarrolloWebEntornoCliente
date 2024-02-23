@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="lienzo" width="500" height="500"></canvas>
+    <canvas id="lienzo1" width="500" height="500"></canvas>
+    <canvas id="lienzo2" width="500" height="500"></canvas>
+    <canvas id="lienzo3" width="500" height="500"></canvas>
+    <canvas id="lienzo4" width="500" height="500"></canvas>
+    <canvas id="lienzo5" width="500" height="500"></canvas>
+
+    <script>
+        let lienzo = document.getElementById("lienzo");
+        let ctx = lienzo.getContext("2d");
+
+        let lienzo1 = document.getElementById("lienzo1");
+        let ctx1 = lienzo1.getContext("2d");
+
+        let lienzo2 = document.getElementById("lienzo2");
+        let ctx2 = lienzo2.getContext("2d");
+
+        let lienzo3 = document.getElementById("lienzo3");
+        let ctx3 = lienzo3.getContext("2d");
+
+        let lienzo4 = document.getElementById("lienzo4");
+        let ctx4 = lienzo4.getContext("2d");
+
+        let lienzo5 = document.getElementById("lienzo5");
+        let ctx5 = lienzo5.getContext("2d");
+
+
+        //Señal 1
+        ctx.beginPath();
+        ctx.moveTo(100, 30);
+        ctx.lineTo(170, 170);
+        ctx.lineTo(30, 170);
+        ctx.closePath();
+
+        ctx.lineWidth = 10;
+        ctx.strokeStyle = "red";
+        ctx.lineJoin = "round";
+
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(100, 5);
+        ctx.lineTo(190, 180);
+        ctx.lineTo(10, 180);
+        ctx.closePath();
+
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = "black";
+        ctx.lineJoin = "round";
+
+        ctx.stroke();
+
+
+        //Señal 2
+        ctx1.beginPath();
+        ctx1.moveTo(100, 180);
+        ctx1.lineTo(20, 20);
+        ctx1.lineTo(180, 20);
+        ctx1.closePath();
+
+        ctx1.lineWidth = 15;
+        ctx1.strokeStyle = "red";
+
+        ctx1.lineJoin = "round";
+
+        ctx1.stroke();
+
+
+        //Señal 3
+        ctx2.beginPath();
+        ctx2.moveTo(100, 20);
+        ctx2.lineTo(180, 180);
+        ctx2.lineTo(20, 180);
+        ctx2.closePath();
+
+        ctx2.lineWidth = 10;
+        ctx2.strokeStyle = "red";
+        ctx2.lineJoin = "round";
+
+        ctx2.fillStyle = "yellow";
+
+        ctx2.fill();
+        ctx2.stroke();
+
+
+        ctx2.beginPath();
+        ctx2.moveTo(100, 80);
+        ctx2.lineTo(100, 130);
+        ctx2.closePath();
+
+        ctx2.strokeStyle = "black";
+        ctx2.stroke();
+
+        ctx2.moveTo(100, 150);
+        ctx2.arc(100, 150, 5, 0, 2 * Math.PI);
+
+        ctx2.stroke();
+
+
+        //Señal 4
+        ctx3.beginPath();
+        ctx3.moveTo(100, 20);
+        ctx3.lineTo(180, 180);
+        ctx3.lineTo(20, 180);
+        ctx3.closePath();
+
+        ctx3.lineWidth = 10;
+        ctx3.strokeStyle = "red";
+        ctx3.lineJoin = "round";
+
+        ctx3.stroke();
+
+        ctx3.beginPath();
+        ctx3.moveTo(100, 150);
+        ctx3.arc(100, 150, 8, 0, 2 * Math.PI);
+        ctx3.closePath();
+
+        ctx3.strokeStyle = "green";
+        ctx3.stroke();
+
+
+        ctx3.beginPath();
+        ctx3.moveTo(100, 115);
+        ctx3.arc(100, 115, 8, 0, 2 * Math.PI);
+        ctx3.closePath();
+
+        ctx3.strokeStyle = "yellow";
+        ctx3.stroke();
+
+
+        ctx3.beginPath();
+        ctx3.moveTo(100, 80);
+        ctx3.arc(100, 80, 8, 0, 2 * Math.PI);
+        ctx3.closePath();
+
+        ctx3.strokeStyle = "red";
+        ctx3.stroke();
+
+
+        //Señal 5
+        ctx4.beginPath();
+        ctx4.moveTo(100, 20);
+        ctx4.lineTo(180, 180);
+        ctx4.lineTo(20, 180);
+        ctx4.closePath();
+
+        ctx4.lineWidth = 10;
+        ctx4.strokeStyle = "red";
+        ctx4.lineJoin = "round";
+        ctx4.stroke();
+
+        //flecha izq
+        ctx4.beginPath();
+        ctx4.moveTo(85, 90);
+        ctx4.lineTo(85, 140);
+        ctx4.closePath();
+
+        ctx4.lineWidth = 15;
+        ctx4.strokeStyle = "black";
+        ctx4.lineJoin = "miter";
+        ctx4.stroke();
+
+        //punta izq
+        ctx4.beginPath();
+        ctx4.moveTo(70, 140);
+        ctx4.lineTo(85, 165);
+        ctx4.lineTo(100, 140);
+        ctx4.closePath();
+
+        ctx4.fillStyle = "black";
+
+        ctx4.fill();
+
+
+        //flecha der
+        ctx4.beginPath();
+        ctx4.moveTo(115, 115);
+        ctx4.lineTo(115, 165);
+        ctx4.closePath();
+
+        ctx4.lineWidth = 15;
+        ctx4.strokeStyle = "black";
+        ctx4.lineJoin = "miter";
+        ctx4.stroke();
+
+        //punta der
+        ctx4.beginPath();
+        ctx4.moveTo(130, 115);
+        ctx4.lineTo(100, 115);
+        ctx4.lineTo(115, 85);
+        ctx4.closePath();
+
+        ctx4.fillStyle = "black";
+
+        ctx4.fill();
+
+
+        //Señal 6
+
+        // Triángulo
+        ctx5.beginPath();
+        ctx5.moveTo(100, 30);
+        ctx5.lineTo(170, 170);
+        ctx5.lineTo(30, 170);
+        ctx5.closePath();
+
+        ctx5.lineWidth = 10;
+        ctx5.strokeStyle = "red";
+        ctx5.lineJoin = "round";
+
+        ctx5.stroke();
+
+        // Calcular el centro del triángulo
+        var centroX = (100 + 170 + 30) / 3;
+        var centroY = (30 + 170 + 170) / 3;
+
+        // Dibujar la "x" de color negro dentro del triángulo
+        var cruzLongitud = 20;
+        ctx5.beginPath();
+
+        ctx5.moveTo(centroX - cruzLongitud, centroY - cruzLongitud);
+        ctx5.lineTo(centroX + cruzLongitud, centroY + cruzLongitud);
+        ctx5.moveTo(centroX + cruzLongitud, centroY - cruzLongitud);
+        ctx5.lineTo(centroX - cruzLongitud, centroY + cruzLongitud);
+
+        ctx5.strokeStyle = "#000000";
+        ctx5.lineWidth = 8;
+        ctx5.stroke();
+    </script>
+</body>
+
+</html>

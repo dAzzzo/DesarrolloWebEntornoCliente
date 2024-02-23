@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+    </canvas>
+    <canvas id="lienzo" width="500" height="200px">
+
+    </canvas>
+
+
+    <script>
+        let lienzo = document.getElementById("lienzo");
+        let ctx = lienzo.getContext("2d");
+
+
+        //Triangulo rojo
+        ctx.beginPath();
+        ctx.moveTo(100, 20);
+        ctx.lineTo(180, 180);
+        ctx.lineTo(20, 180);
+        ctx.closePath();
+
+        ctx.lineWidth = 11;
+        ctx.strokeStyle = "red";
+        ctx.lineJoin = "round";
+
+        ctx.fillStyle = "white";
+
+        ctx.fill();
+        ctx.stroke();
+
+
+        //Palo de la exclamación
+        ctx.beginPath();
+        ctx.moveTo(100, 80);
+        ctx.lineTo(100, 130);
+        ctx.closePath();
+
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+
+        //Punto de la exclamacion
+        ctx.moveTo(100, 150);
+        ctx.arc(100, 150, 5, 0, 2 * Math.PI);
+
+        ctx.stroke();
+    </script>
+</body>
+
+</html>

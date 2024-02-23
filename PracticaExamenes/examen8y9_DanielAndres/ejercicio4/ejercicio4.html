@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejerccio 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 30px;
+        }
+
+        .candidate {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .candidate img {
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio 4: Candidatos</h1>
+    <div id="candidates"></div>
+    <script>
+        /*
+        Trabajas para una empresa tecnologica que necesita de un practico. Para ello, el trabajo de recruiting debe presentar 
+        3 candidatos a su superrior. Para ello realizara una petcicion
+        de datos a la siguiente web: https://randomuser.me/api/?results=3
+        Esta web debe tener 3 botones (uno por cada candidato) y cuando se clique mostrara la informacion 
+        (nombre, edad, genero, email, telefono y foto) de dicho candidato en el documento HTML
+        */
+
+        //Creacion del addeventlistener
+        document.addEventListener('DOMContentLoaded', function () {
+            let candidatesDiv = document.getElementById('candidates');
+
+
+            //Se hace un fetch para buscar la api
+            function loadCandidates() {
+                fetch('https://randomuser.me/api/?results=3')
+                    .then(response => response.json())
+                    .then(data => {
+                        data.results.forEach(candidate => {
+                            //Usamos html para  mostrar por pantalla
+                            let candidateInfo = `
+                        <div class="candidate">
+                            <img src="${candidate.picture.large}" alt="Candidate Image">
+                            <p><strong>Name:</strong> ${candidate.name.first} ${candidate.name.last}</p>
+                            <p><strong>Age:</strong> ${candidate.dob.age}</p>
+                            <p><strong>Gender:</strong> ${candidate.gender}</p>
+                            <p><strong>Email:</strong> ${candidate.email}</p>
+                            <p><strong>Phone:</strong> ${candidate.phone}</p>
+                        </div>`;
+                            candidatesDiv.insertAdjacentHTML('beforeend', candidateInfo);
+                        });
+                    })
+                    .catch(error => console.log('Error  al hacer fetching en los candidatos', error));
+            }
+
+            //Lista de botones para realizar la funcion de candidatos
+            for (let i = 1; i <= 3; i++) {
+                let button = document.createElement('button');
+                button.textContent = `Candidate ${i}`;
+                button.classList.add('button');
+                button.addEventListener('click', loadCandidates);
+                candidatesDiv.appendChild(button);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
