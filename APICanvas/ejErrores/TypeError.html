@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type Error</title>
+</head>
+
+<body>
+    <script>
+
+        // Ejemplo de TypeError: Usando un operador con un tipo de dato incorrecto
+        try {
+            const num = 10;
+            num(); // Intentando llamar a un número como función
+        } catch (error) {
+            if (error instanceof TypeError) {
+                console.error("Error de tipo:", error.message);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

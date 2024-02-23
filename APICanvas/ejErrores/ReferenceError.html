@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference Error</title>
+</head>
+
+<body>
+    <script>
+
+        // Ejemplo de ReferenceError: Intentando acceder a una variable no definida
+        try {
+            console.log(variableNoDefinida);
+        } catch (error) {
+            if (error instanceof ReferenceError) {
+                console.error("Error de referencia:", error.message);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

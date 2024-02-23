@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntax Error</title>
+</head>
+
+<body>
+    <script>
+
+        // Ejemplo de SyntaxError: Escribiendo una sintaxis inválida
+        try {
+            eval("hola mundo");
+        } catch (error) {
+            if (error instanceof SyntaxError) {
+                console.error("Error de sintaxis:", error.message);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eval Error</title>
+</head>
+
+<body>
+    <script>
+        // Ejemplo de EvalError: Usando eval() con una sintaxis incorrecta
+        try {
+            eval("alert('Hola Mundo')");
+        } catch (error) {
+            if (error instanceof EvalError) {
+                console.error("Error de evaluación:", error.message);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

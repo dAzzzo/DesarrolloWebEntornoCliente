@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Range Error</title>
+</head>
+
+<body>
+    <script>
+
+
+        // Ejemplo de RangeError: Accediendo a un índice fuera del rango de un array
+        try {
+            const arr = [1, 2, 3];
+            console.log(arr[10]);
+        } catch (error) {
+            if (error instanceof RangeError) {
+                console.error("Error de rango:", error.message);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

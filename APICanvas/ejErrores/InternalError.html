@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internal Error</title>
+</head>
+
+<body>
+    <script>
+
+        // Ejemplo de InternalError: Creando un bucle infinito
+        try {
+            function infiniteLoop() {
+                while (true) { }
+            }
+            infiniteLoop();
+        } catch (error) {
+            if (error instanceof InternalError) {
+                console.error("Error interno:", error.message);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
